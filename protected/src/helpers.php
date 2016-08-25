@@ -224,3 +224,12 @@ if ( ! function_exists( 'param' ) ) {
 		}
 	}
 }
+if ( ! function_exists( 'auth' ) ) {
+
+	/**
+	 * @return TAuthManager
+	 */
+	function auth() {
+		return module( 'auth' );
+	}
+}
