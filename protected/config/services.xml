@@ -6,5 +6,7 @@
         <service id="page" class="TPageService" DefaultPage="Home">
             <pages MasterClass="MainLayout"/>
         </service>
+        <!--         Web Site Administration Tool  -->
+        <service id="wsat" class="System.Wsat.TWsatService" Password="wsat"/>
     </services>
 </configuration>
