@@ -2,3 +2,4 @@
 /assets
 /protected/runtime
 /.idea
+/protected/data/app.db
