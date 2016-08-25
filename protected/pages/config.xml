@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!-- alias definitions and namespace usings
+    <paths>
+      <alias id="myalias" path="./lib" />
+      <using namespace="Application.common.*" />
+    </paths>
+    -->
+    <!-- authorization rules definitions
+    <authorization>
+        <deny users="" pages="" roles="" verbs=""/>
+        <allow users="" pages="" roles="" verbs=""/>
+    </authorization>
+    -->
+    <!-- pages definitions, applied to this dir and sub dirs pages
+    <pages PropertyName="PropertyValue">
+        <page id="page_id" PropertyName="PropertyValue"/>
+    </pages>
+    -->
+    <!-- Modules definitions
+    <modules>
+        <module id="" class="" PropertyName="PropertyValue"/>
+    </modules>
+    -->
+</configuration>
