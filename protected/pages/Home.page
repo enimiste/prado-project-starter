@@ -1,4 +1,4 @@
-<%@ Title="Welcome to my blog"%>
+<%@ MasterClass="MainLayout" Title="Welcome to my blog"%>
 <com:TContent ID="Main">
   This the home page
 </com:TContent>
