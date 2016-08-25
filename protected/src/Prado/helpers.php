@@ -161,7 +161,7 @@ if ( ! function_exists( 'localize' ) ) {
 	}
 }
 
-if ( ! function_exists( 'log' ) ) {
+if ( ! function_exists( 'plog' ) ) {
 
 	/**
 	 * @param string $msg
@@ -169,19 +169,19 @@ if ( ! function_exists( 'log' ) ) {
 	 * @param string $category
 	 * @param string $ctl
 	 */
-	function log( $msg, $level = TLogger::INFO, $category = 'Uncategorized', $ctl = null ) {
+	function plog( $msg, $level = TLogger::INFO, $category = 'Uncategorized', $ctl = null ) {
 		Prado::log( $msg, $level, $category, $ctl );
 	}
 }
 
-if ( ! function_exists( 'trace' ) ) {
+if ( ! function_exists( 'ptrace' ) ) {
 
 	/**
 	 * @param string $msg
 	 * @param string $category
 	 * @param string $ctl
 	 */
-	function trace( $msg, $category = 'Uncategorized', $ctl = null ) {
+	function ptrace( $msg, $category = 'Uncategorized', $ctl = null ) {
 		Prado::trace( $msg, $category, $ctl );
 	}
 }
