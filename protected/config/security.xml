@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <!-- configuration for available services -->
+    <modules>
+        <module id="auth" class="System.Security.TAuthManager"
+                UserManager="users"
+                LoginPage="users.LoginPage"/>
+        <module id="users" class="System.Security.TDbUserManager" UserClass="Application.src.AppUser"/>
+    </modules>
+</configuration>
