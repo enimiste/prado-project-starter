@@ -9,6 +9,7 @@
     <include file="Application.config.modules"/>
     <include file="Application.config.database"/>
     <include file="Application.config.security"/>
+    <include file="Application.config.routes"/>
 
     <include file="Application.config.services"/>
 

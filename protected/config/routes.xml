@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <modules>
+        <!-- Remove this comment mark to enable PATH url format
+        <module id="request" class="THttpRequest" UrlFormat="Path" />
+        -->
+    </modules>
+</configuration>
