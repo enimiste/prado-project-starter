@@ -6,7 +6,7 @@
  * Time: 15:04
  */
 
-namespace App;
+namespace App\Prado;
 
 
 class Page extends \TPage {

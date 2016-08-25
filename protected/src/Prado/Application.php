@@ -6,7 +6,7 @@
  * Time: 15:03
  */
 
-namespace App;
+namespace App\Prado;
 
 
 class Application extends \TApplication {

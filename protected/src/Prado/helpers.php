@@ -78,8 +78,8 @@ if ( ! function_exists( 'page_service' ) ) {
 	 * @throws THttpException
 	 */
 	function page_service() {
-		if ( app()->getPageServiceID() == current_service()->getID() ) {
-			return current_service();
+		if ( app()->getPageServiceID() == running_service()->getID() ) {
+			return running_service();
 		} else {
 			throw new THttpException( 500, 'Page Service not found' );
 		}

@@ -1,6 +1,6 @@
 <?php
 
-use App\Page;
+use App\Prado\Page;
 
 class Home extends Page {
 

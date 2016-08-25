@@ -21,5 +21,5 @@ if ( ! is_writable( $runtimePath ) ) {
 require_once( $frameworkPath );
 require_once __DIR__ . '/vendor/autoload.php';
 
-$application = new \App\Application();
+$application = new \App\Prado\Application();
 $application->run();

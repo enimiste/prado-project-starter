@@ -1,6 +1,13 @@
 {
   "name": "nickelit/site-starter-prado",
   "description": "A starter project for building web site",
+  "keywords": [
+    "prado",
+    "web",
+    "event-driven",
+    "components",
+    "framework"
+  ],
   "type": "project",
   "require": {
     "pradosoft/prado": "~3.2"
@@ -14,7 +21,7 @@
   ],
   "autoload": {
     "files": [
-      "protected/src/helpers.php"
+      "protected/src/Prado/helpers.php"
     ],
     "psr-4": {
       "App\\": "protected/src"
