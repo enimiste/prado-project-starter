@@ -63,11 +63,11 @@ if ( ! function_exists( 'redirect_to_url' ) ) {
 		return response()->redirect( $url );
 	}
 }
-if ( ! function_exists( 'current_service' ) ) {
+if ( ! function_exists( 'running_service' ) ) {
 	/**
 	 * @return IService
 	 */
-	function current_service() {
+	function running_service() {
 		return app()->getService();
 	}
 }
@@ -113,17 +113,6 @@ if ( ! function_exists( 'input' ) ) {
 		} else {
 			return $default;
 		}
-	}
-}
-
-if ( ! function_exists( 'is_post_back' ) ) {
-	/**
-	 * @param TPage $page
-	 *
-	 * @return bool
-	 */
-	function is_post_back( TPage $page ) {
-		return $page->getIsPostBack();
 	}
 }
 
