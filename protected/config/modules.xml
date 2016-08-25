@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <!-- configurations for modules -->
+    <modules>
+        <!-- Remove this comment mark to enable caching
+        <module id="cache" class="System.Caching.TDbCache" />
+        -->
+
+        <!-- Remove this comment mark to enable PATH url format
+        <module id="request" class="THttpRequest" UrlFormat="Path" />
+        -->
+
+        <!-- Remove this comment mark to enable logging
+        <module id="log" class="System.Util.TLogRouter">
+          <route class="TBrowserLogRoute" Categories="System" />
+        </module>
+        -->
+    </modules>
+</configuration>

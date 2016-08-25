@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <!-- configuration for available services -->
+    <services>
+        <service id="page" class="TPageService" DefaultPage="Home"/>
+    </services>
+</configuration>

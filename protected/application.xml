@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<application id="site-starter-prado" mode="Debug">
+    <!-- include ext config
+    <include file="path.to.extconfig" when="PHP expression" />
+    -->
+    <include file="Application.config.paths"/>
+    <include file="Application.config.modules"/>
+    <include file="Application.config.services"/>
+    <include file="Application.config.parameters"/>
+
+</application>
