@@ -1,0 +1,36 @@
+<%@ Title='Login' %>
+<html lang="en">
+<com:Thead>
+  <meta charset="UTF-8">
+</com:Thead>
+<body>
+<com:TForm>
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <com:TLabel Text="Username" ForControl="UsernameTxt"/>
+  <com:TRequiredFieldValidator ControlToValidate="UsernameTxt"
+                               ErrorMessage="Required"
+                               Display="Dynamic"/>
+  <com:TTextBox ID="UsernameTxt"
+                Attributes.Autofocus=""/>
+
+  <com:TLabel Text="Password" ForControl="PasswordTxt"/>
+  <com:TRequiredFieldValidator ControlToValidate="PasswordTxt"
+                               ErrorMessage="Required"
+                               Display="Dynamic"/>
+  <com:TCustomValidator ControlToValidate="PasswordTxt"
+                        ErrorMessage="Invalid passwod"
+                        Display="Dynamic"
+                        OnServerValidate="validateUser"/>
+  <com:TTextBox ID="PasswordTxt" TextMode="Password"/>
+  <div class="checkbox">
+    <com:TLabel ForControl="RememberMeChck">
+      <com:TCheckBox ID="RememberMeChck" Value="remember-me"/>
+      Remember Me
+    </com:TLabel>
+  </div>
+  <com:TButton
+          Text="Sign in"
+          OnClick="signInBtnClicked"/>
+</com:TForm>
+</body>
+</html>
