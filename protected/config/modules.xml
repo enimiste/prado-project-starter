@@ -10,11 +10,13 @@
         <!-- Remove this comment mark to enable PATH url format
         <module id="request" class="THttpRequest" UrlFormat="Path" />
         -->
+        <module class="Application.src.Exception.Handler.AppErrorHandler"/>
 
-        <!-- Remove this comment mark to enable logging
         <module id="log" class="System.Util.TLogRouter">
-          <route class="TBrowserLogRoute" Categories="System" />
+            <route class="TFileLogRoute" Categories="AppException"
+                   MaxFileSize="512" MaxLogFiles="2"
+                   LogFile="app-error.log"
+            />
         </module>
-        -->
     </modules>
 </configuration>
