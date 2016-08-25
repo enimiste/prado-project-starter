@@ -1,8 +1,4 @@
-<html>
-<head>
-  <title>Welcome to PRADO</title>
-</head>
-<body>
-<h1>Welcome to PRADO!</h1>
-</body>
-</html>
+<%@ Title="Welcome to my blog"%>
+<com:TContent ID="Main">
+  This the home page
+</com:TContent>

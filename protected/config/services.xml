@@ -3,6 +3,8 @@
 <configuration>
     <!-- configuration for available services -->
     <services>
-        <service id="page" class="TPageService" DefaultPage="Home"/>
+        <service id="page" class="TPageService" DefaultPage="Home">
+            <pages MasterClass="MainLayout"/>
+        </service>
     </services>
 </configuration>
