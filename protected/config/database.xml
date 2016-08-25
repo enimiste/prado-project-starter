@@ -8,6 +8,12 @@
             <!-- <database ConnectionString="mysqli:host=localhost;dbname=test"
                       username="dbuser" password="dbpass" /> -->
         </module>
+        <!--
+        <module id="db" class="System.Data.TDataSourceConfig">
+            <database ConnectionString="mysqli:host=localhost;dbname=test"
+                      username="dbuser" password="dbpass" />
+        </module>
+        -->
         <module id="ar" class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
     </modules>
 

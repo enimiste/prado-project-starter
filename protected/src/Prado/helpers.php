@@ -6,6 +6,8 @@
  * Time: 14:07
  */
 
+use App\Exception\AppException;
+
 if ( ! function_exists( 'app' ) ) {
 
 	/**
@@ -75,13 +77,13 @@ if ( ! function_exists( 'running_service' ) ) {
 if ( ! function_exists( 'page_service' ) ) {
 	/**
 	 * @return TPageService
-	 * @throws THttpException
+	 * @throws AppException
 	 */
 	function page_service() {
 		if ( app()->getPageServiceID() == running_service()->getID() ) {
 			return running_service();
 		} else {
-			throw new THttpException( 500, 'Page Service not found' );
+			throw new AppException( 500, 'Page Service not found' );
 		}
 	}
 }
@@ -213,6 +215,7 @@ if ( ! function_exists( 'param' ) ) {
 		}
 	}
 }
+
 if ( ! function_exists( 'auth' ) ) {
 
 	/**
@@ -220,5 +223,23 @@ if ( ! function_exists( 'auth' ) ) {
 	 */
 	function auth() {
 		return module( 'auth' );
+	}
+}
+
+if ( ! function_exists( 'db_conn' ) ) {
+
+	/**
+	 * @param string $conn connection name in the database.xml config
+	 *
+	 * @return TDbConnection
+	 * @throws AppException
+	 */
+	function db_conn( $conn ) {
+		$db_conn = module( $conn );
+		if ( ! $db_conn instanceof TDbConnection ) {
+			throw new AppException( 500, 'Database Connection not found' );
+		}
+
+		return $db_conn;
 	}
 }
