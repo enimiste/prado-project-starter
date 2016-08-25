@@ -45,21 +45,21 @@ if ( ! function_exists( 'response' ) ) {
 	}
 }
 
-if ( ! function_exists( 'redirect_to_page' ) ) {
+if ( ! function_exists( 'redirect_page' ) ) {
 	/**
 	 * @param string $page
 	 * @param array  $param
 	 */
-	function redirect_to_page( $page, array $param = [ ] ) {
-		return redirect_to_url( page_url( $page, $param ) );
+	function redirect_page( $page, array $param = [ ] ) {
+		return redirect_url( page_url( $page, $param ) );
 	}
 }
 
-if ( ! function_exists( 'redirect_to_url' ) ) {
+if ( ! function_exists( 'redirect_url' ) ) {
 	/**
 	 * @param string $url
 	 */
-	function redirect_to_url( $url ) {
+	function redirect_url( $url ) {
 		return response()->redirect( $url );
 	}
 }
