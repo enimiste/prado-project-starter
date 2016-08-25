@@ -6,10 +6,6 @@
         <!-- Remove this comment mark to enable caching
         <module id="cache" class="System.Caching.TDbCache" />
         -->
-
-        <!-- Remove this comment mark to enable PATH url format
-        <module id="request" class="THttpRequest" UrlFormat="Path" />
-        -->
         <module class="Application.src.Exception.Handler.AppErrorHandler"/>
 
         <module id="log" class="System.Util.TLogRouter">

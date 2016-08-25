@@ -37,7 +37,7 @@ EOF;
 	 */
 	protected function handleExternalError( $statusCode, $exception ) {
 		if ( $exception instanceof AppException ) {
-			log( $exception->getErrorMessage(), \TLogger::ERROR, 'AppException' );
+			plog( $exception->getErrorMessage(), \TLogger::ERROR, 'AppException' );
 		}
 		parent::handleExternalError( $statusCode, $exception );
 	}
