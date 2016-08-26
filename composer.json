@@ -31,7 +31,8 @@
     "post-install-cmd": [
       "mv protected/data/app.db_ protected/data/app.db",
       "chmod go+w assets",
-      "chmod go+w runtime"
+      "chmod go+w protected/runtime",
+      "chmod go+w protected/data"
     ]
   }
 }
