@@ -1,5 +1,7 @@
 /vendor
-/assets
-/protected/runtime
+!/assets/.gitkeep
+/assets/*/
+!/protected/runtime/.gitkeep
+/protected/runtime/*/
 /.idea
 /protected/data/app.db
