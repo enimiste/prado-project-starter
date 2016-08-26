@@ -62,6 +62,7 @@
                 <com:TTextBox ID="PasswordTxt" TextMode="Password"
                               CssClass="form-control"
                               Attributes.placeholder="Type here your passsword"/>
+                <com:TKeyboard ForControl="PasswordTxt"/>
               </div>
               <div class="checkbox">
                 <com:TLabel ForControl="RememberMeChck">
