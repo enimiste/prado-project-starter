@@ -243,3 +243,13 @@ if ( ! function_exists( 'db_conn' ) ) {
 		return $db_conn;
 	}
 }
+
+if ( ! function_exists( 'site_url' ) ) {
+
+	/**
+	 * @return string
+	 */
+	function site_url( $uri ) {
+		return rtrim( param( 'base_url', request()->getApplicationUrl() ), '/' ) . '/' . $uri;
+	}
+}

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <configuration>
-    <!-- application parameters
+    <!-- application parameters -->
     <parameters>
-      <parameter id="param1" value="value1" />
-      <parameter id="param2" value="value2" />
+        <parameter id="base_url" value="http://localhost:8888/site-starter-prado/"/>
     </parameters>
-    -->
+
 </configuration>
