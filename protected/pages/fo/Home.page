@@ -1,12 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Acceuil</title>
-</head>
-<body>
-Bienvenu dans notre site web
-<br/>
-<a href="<%= page_url('bo.Dashboard') %>">Espace d'administration</a>
-</body>
-</html>
+<%@ MasterClass="FrontLayout" Title="Acceuil" %>
+<com:TContent ID="Main">
+  Bienvenu dans notre site web
+</com:TContent>
