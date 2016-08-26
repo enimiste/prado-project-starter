@@ -43,18 +43,36 @@
           <com:TForm Attributes.role="form">
             <fieldset>
               <div class="form-group">
-                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                <com:TRequiredFieldValidator ControlToValidate="UsernameTxt"
+                                             ErrorMessage="Required"
+                                             Display="Dynamic"/>
+                <com:TTextBox ID="UsernameTxt"
+                              CssClass="form-control">
+                  <prop:Attributes autofocus="" placeholder="Your username"/>
+                </com:TTextBox>
               </div>
               <div class="form-group">
-                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                <com:TRequiredFieldValidator ControlToValidate="PasswordTxt"
+                                             ErrorMessage="Required"
+                                             Display="Dynamic"/>
+                <com:TCustomValidator ControlToValidate="PasswordTxt"
+                                      ErrorMessage="Invalid passwod"
+                                      Display="Dynamic"
+                                      OnServerValidate="validateUser"/>
+                <com:TTextBox ID="PasswordTxt" TextMode="Password"
+                              CssClass="form-control"
+                              Attributes.placeholder="Type here your passsword"/>
               </div>
               <div class="checkbox">
-                <label>
-                  <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                </label>
+                <com:TLabel ForControl="RememberMeChck">
+                  <com:TCheckBox ID="RememberMeChck" Value="remember-me"/>
+                  Remember Me
+                </com:TLabel>
               </div>
-              <!-- Change this to a button or input when using this as a form -->
-              <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+              <com:TButton
+                      Text="Login"
+                      CssClass="btn btn-lg btn-success btn-block"
+                      OnClick="signInBtnClicked"/>
             </fieldset>
           </com:TForm>
         </div>
