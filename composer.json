@@ -26,5 +26,12 @@
     "psr-4": {
       "App\\": "protected/src"
     }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "mv protected/data/app.db_ protected/data/app.db",
+      "chmod go+w assets",
+      "chmod go+w runtime"
+    ]
   }
 }
