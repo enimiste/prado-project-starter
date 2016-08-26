@@ -128,6 +128,26 @@ if ( ! function_exists( 'is_guest' ) ) {
 	}
 }
 
+if ( ! function_exists( 'is_admin' ) ) {
+
+	/**
+	 * @return bool
+	 */
+	function is_admin() {
+		return user()->getIsAdmin();
+	}
+}
+
+if ( ! function_exists( 'is_super_admin' ) ) {
+
+	/**
+	 * @return bool
+	 */
+	function is_super_admin() {
+		return user()->getIsSuperAdmin();
+	}
+}
+
 if ( ! function_exists( 'user' ) ) {
 
 	/**
