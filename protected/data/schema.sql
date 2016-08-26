@@ -9,5 +9,6 @@ CREATE TABLE users (
 );
 
 /* insert some initial data records for testing */
+INSERT INTO users VALUES ('sadmin', 'sadmin@example.com', 'sadmin', 2, 'Super', 'Administrator');
 INSERT INTO users VALUES ('admin', 'admin@example.com', 'admin', 1, 'Administrator', 'User');
 INSERT INTO users VALUES ('user', 'demo@example.com', 'user', 0, 'Normal', 'User');
