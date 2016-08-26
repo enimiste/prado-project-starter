@@ -1,6 +1,6 @@
 <?php
 
-$frameworkPath = '/Volumes/Data/Code/site-starter-prado/vendor/pradosoft/prado/framework/prado.php';
+$frameworkPath = __DIR__ . '/vendor/pradosoft/prado/framework/prado.php';
 
 // The following directory checks may be removed if performance is required
 $basePath    = dirname( __FILE__ );
