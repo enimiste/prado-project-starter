@@ -48,7 +48,7 @@ class AppUser extends \TDbUser {
 			$buser           = new self( $this->Manager );
 			$buser->Name     = $username;
 			$buser->Fullname = $user->first_name . ' ' . $user->last_name;
-			$buser->Roles    = ( $user->role == 1 ? 'admin' : 'user' );
+			$buser->Roles    = $this->getRolesCodes()[ $user->role ];
 			$buser->IsGuest  = false;
 
 			return $buser;
@@ -57,8 +57,29 @@ class AppUser extends \TDbUser {
 		return null;
 	}
 
+	/**
+	 * @return array
+	 */
+	public function getRolesCodes() {
+		return [
+			0 => 'user',
+			1 => 'admin',
+			2 => 'sadmin',
+		];
+	}
+
+	/**
+	 * @return bool
+	 */
 	public function getIsAdmin() {
 		return $this->isInRole( 'admin' );
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getIsSuperAdmin() {
+		return $this->isInRole( 'sadmin' );
 	}
 
 	/**
