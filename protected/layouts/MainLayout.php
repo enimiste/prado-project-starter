@@ -9,4 +9,25 @@ use App\Prado\MasterPage;
  */
 class MainLayout extends MasterPage {
 
+	/**
+	 * @param TButton         $sender
+	 * @param TEventParameter $param
+	 */
+	public function searchBtnClicked( $sender, $param ) {
+
+		$q = $this->SearchTxt->Text;
+
+		redirect_page( 'home' );
+	}
+
+	/**
+	 * @param TLinkButton     $sender
+	 * @param TEventParameter $param
+	 */
+	public function logoutBtnClicked( $sender, $param ) {
+		auth()->logout();
+
+		redirect_url( 'login' );
+
+	}
 }
