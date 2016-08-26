@@ -10,16 +10,16 @@
   <meta name="author" content="">
 
   <!-- Bootstrap Core CSS -->
-  <link href="<%= site_url('theme/vendor/bootstrap/css/bootstrap.min.css') %>" rel="stylesheet">
+  <link href="<%= site_url('theme/bo/vendor/bootstrap/css/bootstrap.min.css') %>" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <link href="<%= site_url('theme/vendor/metisMenu/metisMenu.min.css') %>" rel="stylesheet">
+  <link href="<%= site_url('theme/bo/vendor/metisMenu/metisMenu.min.css') %>" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="<%= site_url('theme/css/sb-admin-2.css') %>" rel="stylesheet">
+  <link href="<%= site_url('theme/bo/css/sb-admin-2.css') %>" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="<%= site_url('theme/vendor/font-awesome/css/font-awesome.min.css') %>" rel="stylesheet" type="text/css">
+  <link href="<%= site_url('theme/bo/vendor/font-awesome/css/font-awesome.min.css') %>" rel="stylesheet" type="text/css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +43,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= page_url('dashboard') %>">Nickel IT</a>
+        <a class="navbar-brand" href="<%= page_url('bo.Dashboard') %>">Nickel IT</a>
       </div>
       <!-- /.navbar-header -->
 
@@ -100,16 +100,16 @@
 </com:TForm>
 
 <!-- jQuery -->
-<script src="<%= site_url('theme/vendor/jquery/jquery.min.js') %>"></script>
+<script src="<%= site_url('theme/bo/vendor/jquery/jquery.min.js') %>"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="<%= site_url('theme/vendor/bootstrap/js/bootstrap.min.js') %>"></script>
+<script src="<%= site_url('theme/bo/vendor/bootstrap/js/bootstrap.min.js') %>"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="<%= site_url('theme/vendor/metisMenu/metisMenu.min.js') %>"></script>
+<script src="<%= site_url('theme/bo/vendor/metisMenu/metisMenu.min.js') %>"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="<%= site_url('theme/js/sb-admin-2.js') %>"></script>
+<script src="<%= site_url('theme/bo/js/sb-admin-2.js') %>"></script>
 
 </body>
 

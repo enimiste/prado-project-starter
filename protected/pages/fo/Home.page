@@ -6,5 +6,7 @@
 </head>
 <body>
 Bienvenu dans notre site web
+<br/>
+<a href="<%= page_url('bo.Dashboard') %>">Espace d'administration</a>
 </body>
 </html>

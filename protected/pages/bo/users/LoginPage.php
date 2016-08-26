@@ -13,12 +13,16 @@ class LoginPage extends Page {
 	 * @param TButton         $sender
 	 * @param TEventParameter $param
 	 */
-	public function signInBtnClicked( $sender, $param ) {
+	public function loginInBtnClicked( $sender, $param ) {
 		if ( page()->getIsValid() ) {
 
 			$url = auth()->getReturnUrl();
 			if ( empty( $url ) ) {
-				$url = 'dashboard';
+				if ( user()->IsAdmin ) {
+					$url = page_url( 'bo.Dashboard' );
+				} else {
+					$url = 'home';
+				}
 			}
 
 			redirect_url( $url );

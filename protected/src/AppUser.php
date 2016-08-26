@@ -72,7 +72,7 @@ class AppUser extends \TDbUser {
 	 * @return bool
 	 */
 	public function getIsAdmin() {
-		return $this->isInRole( 'admin' );
+		return $this->isInRole( 'admin' ) || $this->isInRole( 'sadmin' );
 	}
 
 	/**
