@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "99802df8dab20f7264e9670756aa5eb5",
-    "content-hash": "0e3302916dd5a3bed26093fa69c583a2",
+    "hash": "98f69e0bba507ede2950498396ed1a9d",
+    "content-hash": "96727dac40067a9450115705594bcd54",
     "packages": [
         {
             "name": "pradosoft/prado",
