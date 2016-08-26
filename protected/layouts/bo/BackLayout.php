@@ -7,7 +7,7 @@ use App\Prado\MasterPage;
  * Date: 25/08/2016
  * Time: 17:15
  */
-class MainLayout extends MasterPage {
+class BackLayout extends MasterPage {
 
 	/**
 	 * @param TButton         $sender
