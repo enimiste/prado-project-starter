@@ -5,3 +5,7 @@ A Project skeleton to build PRADO Framework based application
 
 # After install
 - Change the parameter `base_url` in the file `config/parameters.xml`
+
+# Notation in project structure
+- fo : Front office
+- bo : Back office

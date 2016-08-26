@@ -1,0 +1,4 @@
+<%@ MasterClass="MainLayout" Title="Espace Administration"%>
+<com:TContent ID="Main">
+  This the dashboard page
+</com:TContent>

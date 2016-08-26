@@ -20,8 +20,9 @@
         <module id="friendly-url" class="System.Web.TUrlMapping"
                 EnableCustomUrl="true"
         >
-            <url ServiceParameter="Home" pattern="home"/>
-            <url ServiceParameter="users.LoginPage" pattern="login"/>
+            <url ServiceParameter="fo.Home" pattern="home"/>
+            <url ServiceParameter="bo.Dashboard" pattern="dashboard"/>
+            <url ServiceParameter="bo.users.LoginPage" pattern="login"/>
         </module>
     </modules>
 </configuration>

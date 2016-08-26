@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!-- authorization rules definitions -->
+    <authorization>
+        <allow roles="sadmin,admin"/>
+        <deny users="*"/>
+    </authorization>
+
+</configuration>

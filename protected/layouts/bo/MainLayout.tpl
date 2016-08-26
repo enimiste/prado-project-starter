@@ -43,7 +43,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= page_url('home') %>">Nickel IT</a>
+        <a class="navbar-brand" href="<%= page_url('dashboard') %>">Nickel IT</a>
       </div>
       <!-- /.navbar-header -->
 
@@ -51,7 +51,7 @@
         <!-- /.dropdown -->
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            <i class="fa fa-user fa-fw"></i> (<%= user()->Fullname %>) <i class="fa fa-caret-down"></i>
           </a>
           <ul class="dropdown-menu dropdown-user">
             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -72,7 +72,7 @@
       </ul>
       <!-- /.navbar-top-links -->
 
-      <%include Application.layouts.Menu %>
+      <%include Application.layouts.bo.Menu %>
     </nav>
 
     <!-- Page Content -->

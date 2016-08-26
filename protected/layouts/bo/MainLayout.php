@@ -17,7 +17,7 @@ class MainLayout extends MasterPage {
 
 		$q = $this->SearchTxt->Text;
 
-		redirect_page( 'home' );
+		redirect_page( 'dashboard' );
 	}
 
 	/**

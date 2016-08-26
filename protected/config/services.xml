@@ -3,7 +3,7 @@
 <configuration>
     <!-- configuration for available services -->
     <services>
-        <service id="page" class="TPageService" DefaultPage="Home">
+        <service id="page" class="TPageService" DefaultPage="fo.Home">
         </service>
         <!--         Web Site Administration Tool  -->
         <service id="wsat" class="System.Wsat.TWsatService" Password="wsat"/>

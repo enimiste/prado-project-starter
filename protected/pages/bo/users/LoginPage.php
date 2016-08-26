@@ -18,7 +18,7 @@ class LoginPage extends Page {
 
 			$url = auth()->getReturnUrl();
 			if ( empty( $url ) ) {
-				$url = page_service()->getDefaultPageUrl();
+				$url = 'dashboard';
 			}
 
 			redirect_url( $url );
