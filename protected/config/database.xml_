@@ -4,10 +4,11 @@
     <!-- configurations for modules -->
     <modules>
         <module id="db" class="System.Data.TDataSourceConfig">
-            <!-- <database ConnectionString="sqlite:protected/data/app.db"/> -->
-            <database ConnectionString="mysql:host=localhost;dbname=prado_app"
-                      username="root" password="root"/>
-            -->
+            <database ConnectionString="sqlite:protected/data/app.db"/>
+            <!-- <database ConnectionString="mysqli:host=localhost;dbname=test"
+                      username="dbuser" password="dbpass" /> -->
+            <!-- <database ConnectionString="mysql:host=localhost;dbname=test"
+                                  username="dbuser" password="dbpass" /> -->
         </module>
         <!--
         <module id="db" class="System.Data.TDataSourceConfig">

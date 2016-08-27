@@ -5,3 +5,4 @@
 /protected/runtime/*/
 /.idea
 /protected/data/app.db
+/protected/config/database.xml
