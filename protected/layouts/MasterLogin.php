@@ -7,7 +7,7 @@ use App\Prado\Page;
  * Date: 22/08/2016
  * Time: 13:10
  */
-class LoginPage extends Page {
+class MasterLogin extends Page {
 
 	/**
 	 * @param TButton         $sender
