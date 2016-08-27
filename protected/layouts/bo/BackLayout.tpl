@@ -53,7 +53,7 @@
         <!-- /.dropdown -->
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> (<%= user()->Fullname %>) <i class="fa fa-caret-down"></i>
+            <i class="fa fa-user fa-fw"></i> <%= user()->Fullname %> <i class="fa fa-caret-down"></i>
           </a>
           <ul class="dropdown-menu dropdown-user">
             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>

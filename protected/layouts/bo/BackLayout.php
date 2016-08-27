@@ -27,7 +27,7 @@ class BackLayout extends MasterPage {
 	public function logoutBtnClicked( $sender, $param ) {
 		auth()->logout();
 
-		redirect_url( 'login' );
+		redirect_page( 'bo.users.LoginPage' );
 
 	}
 }
