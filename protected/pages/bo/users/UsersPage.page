@@ -20,13 +20,15 @@
                            CssClass="table table-striped table-bordered table-hover"
                            OnDeleteCommand="onDeleteSelectedUserCommand"
                            OnItemCreated="userItemCreated"
-                           OnEditCommand="editSelectedUserBtnClicked"
-                           OnUpdateCommand="saveSelectedUserBtnClicked"
-                           OnCancelCommand="cancelSelectedUserBtnClicked"
+                           OnEditCommand="editSelectedUserCommand"
+                           OnUpdateCommand="saveSelectedUserCommand"
+                           OnCancelCommand="cancelSelectedUserCommand"
                            DataKeyField="username"
+                           OnSortCommand="onSortUsersCommand"
             >
               <com:TBoundColumn ID="FirstnameCol"
                                 HeaderText="First name"
+                                SortExpression="first_name"
                                 DataField="first_name"/>
 
               <com:TBoundColumn ID="LastnameCol"
@@ -35,6 +37,7 @@
 
               <com:TLiteralColumn HeaderText="Username"
                                   DataField="username"
+                                  SortExpression="username"
               />
 
               <com:TBoundColumn ID="EmailCol"
@@ -42,7 +45,9 @@
                                 DataField="email"/>
               <com:TDropDownListColumn ID="RoleCol"
                                        HeaderText="Role"
-                                       DataTextField="role">
+                                       DataTextField="role"
+                                       SortExpression="role"
+              >
                 <com:TListItem Value="2" Text="Super Admin"/>
                 <com:TListItem Value="1" Text="Admin"/>
                 <com:TListItem Value="0" Text="Normal User"/>

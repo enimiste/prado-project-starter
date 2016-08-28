@@ -1,5 +1,6 @@
 <?php
 use App\Models\UserRecord;
+use App\Prado\DataGridBidirectionalSortTrait;
 use App\Prado\Page;
 
 /**
@@ -9,6 +10,9 @@ use App\Prado\Page;
  * Time: 15:57
  */
 class UsersPage extends Page {
+
+	use DataGridBidirectionalSortTrait;
+
 	/**
 	 * @param $param
 	 */
@@ -35,8 +39,8 @@ class UsersPage extends Page {
 	}
 
 	/**
-	 * @param TDataGrid                      $sender
-	 * @param TDataGridCommandEventParameter $param
+	 * @param TDataGrid                   $sender
+	 * @param TDataGridItemEventParameter $param
 	 */
 	public function userItemCreated( $sender, $param ) {
 		$item = $param->getItem();
@@ -55,7 +59,7 @@ class UsersPage extends Page {
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
 	 */
-	public function editSelectedUserBtnClicked( $sender, $param ) {
+	public function editSelectedUserCommand( $sender, $param ) {
 		$this->UsersDg->EditItemIndex = $param->getItem()->getItemIndex();
 		$this->loadDataAndBind();
 	}
@@ -64,7 +68,7 @@ class UsersPage extends Page {
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
 	 */
-	public function saveSelectedUserBtnClicked( $sender, $param ) {
+	public function saveSelectedUserCommand( $sender, $param ) {
 		$item     = $param->getItem();
 		$username = $this->UsersDg->DataKeys[ $item->getItemIndex() ];
 		/** @var UserRecord $user */
@@ -82,16 +86,25 @@ class UsersPage extends Page {
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
 	 */
-	public function cancelSelectedUserBtnClicked( $sender, $param ) {
+	public function cancelSelectedUserCommand( $sender, $param ) {
 		$this->UsersDg->EditItemIndex = - 1;
 		$this->loadDataAndBind();
 	}
 
-	protected function loadDataAndBind() {
-		$criteria                       = new TActiveRecordCriteria();
-		$criteria->OrdersBy['role']     = 'desc';
-		$criteria->OrdersBy['username'] = 'asc';
-		$this->UsersDg->DataSource      = UserRecord::finder()->findAll( $criteria );
+	/**
+	 * @param string $sortColumn
+	 * @param string $direction
+	 */
+	protected function loadDataAndBind( $sortColumn = '', $direction = 'asc' ) {
+		$criteria = new TActiveRecordCriteria();
+		if ( empty( $sortColumn ) ) {
+
+			$criteria->OrdersBy['role']     = 'desc';
+			$criteria->OrdersBy['username'] = 'asc';
+		} else {
+			$criteria->OrdersBy[ $sortColumn ] = $direction;
+		}
+		$this->UsersDg->DataSource = UserRecord::finder()->findAll( $criteria );
 		$this->UsersDg->databind();
 	}
 
@@ -120,4 +133,15 @@ class UsersPage extends Page {
 	public function validateUsername( $sender, $param ) {
 		$param->IsValid = UserRecord::finder()->findByPk( $param->Value ) === null;
 	}
+
+	/**
+	 * @param TDataGrid                          $sender
+	 * @param TDataGridSortCommandEventParameter $param
+	 */
+	public function onSortUsersCommand( $sender, $param ) {
+		list( $exp, $dir ) = $this->buildSortExp( $param );
+		$this->loadDataAndBind( $exp, $dir );
+	}
+
+
 }
