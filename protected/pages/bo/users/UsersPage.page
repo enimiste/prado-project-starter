@@ -25,6 +25,8 @@
                            OnCancelCommand="cancelSelectedUserCommand"
                            DataKeyField="username"
                            OnSortCommand="onSortUsersCommand"
+                           OnPagerCreated="onPagerCreated"
+                           OnPageIndexChanged="OnPageIndexChanged"
             >
               <com:TBoundColumn ID="FirstnameCol"
                                 HeaderText="First name"
@@ -33,6 +35,7 @@
 
               <com:TBoundColumn ID="LastnameCol"
                                 HeaderText="Last name"
+                                SortExpression="last_name"
                                 DataField="last_name"/>
 
               <com:TLiteralColumn HeaderText="Username"
@@ -42,6 +45,7 @@
 
               <com:TBoundColumn ID="EmailCol"
                                 HeaderText="Email Address"
+                                SortExpression="email"
                                 DataField="email"/>
               <com:TDropDownListColumn ID="RoleCol"
                                        HeaderText="Role"

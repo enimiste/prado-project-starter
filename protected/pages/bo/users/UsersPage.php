@@ -20,7 +20,7 @@ class UsersPage extends Page {
 		parent::onLoad( $param );
 
 		if ( ! $this->IsPostBack ) {
-			$this->loadDataAndBind();
+			$this->loadWithSortAndBind();
 		}
 	}
 
@@ -35,7 +35,7 @@ class UsersPage extends Page {
 
 		UserRecord::finder()->deleteByPk( $username );
 		$this->UsersDg->EditItemIndex = - 1;
-		$this->loadDataAndBind();
+		$this->loadWithSortAndBind();
 	}
 
 	/**
@@ -61,7 +61,7 @@ class UsersPage extends Page {
 	 */
 	public function editSelectedUserCommand( $sender, $param ) {
 		$this->UsersDg->EditItemIndex = $param->getItem()->getItemIndex();
-		$this->loadDataAndBind();
+		$this->loadWithSortAndBind();
 	}
 
 	/**
@@ -79,7 +79,7 @@ class UsersPage extends Page {
 		$user->role       = $item->RoleCol->DropDownList->SelectedValue;
 		$user->save();
 		$this->UsersDg->EditItemIndex = - 1;
-		$this->loadDataAndBind();
+		$this->loadWithSortAndBind();
 	}
 
 	/**
@@ -88,7 +88,7 @@ class UsersPage extends Page {
 	 */
 	public function cancelSelectedUserCommand( $sender, $param ) {
 		$this->UsersDg->EditItemIndex = - 1;
-		$this->loadDataAndBind();
+		$this->loadWithSortAndBind();
 	}
 
 	/**
@@ -139,9 +139,43 @@ class UsersPage extends Page {
 	 * @param TDataGridSortCommandEventParameter $param
 	 */
 	public function onSortUsersCommand( $sender, $param ) {
-		list( $exp, $dir ) = $this->buildSortExp( $param );
-		$this->loadDataAndBind( $exp, $dir );
+		$this->loadWithSortAndBind( $param );
 	}
 
 
+	/**
+	 * @param TDataGrid                    $sender
+	 * @param TDataGridPagerEventParameter $param
+	 */
+	public function onPagerCreated( $sender, $param ) {
+		$pager = $param->getPager();
+
+		if ( $pager->getControls()->count() == 1 ) {
+			$pager->setVisible( false );
+		} else {
+			$pager->getControls()->insertAt( 0, 'Pages : ' );
+		}
+	}
+
+	/**
+	 * @param TDataGrid                          $sender
+	 * @param TDataGridPageChangedEventParameter $param
+	 */
+	public function OnPageIndexChanged( $sender, $param ) {
+		$this->UsersDg->CurrentPageIndex = $param->getNewPageIndex();
+
+		$this->loadWithSortAndBind();
+	}
+
+	/**
+	 * @param TDataGridSortCommandEventParameter $param
+	 */
+	protected function loadWithSortAndBind( $param = null ) {
+		$exp = $this->buildSortExp( $param );
+		if ( ! empty( $exp ) ) {
+			$this->loadDataAndBind( $exp[0], $exp[1] );
+		} else {
+			$this->loadDataAndBind();
+		}
+	}
 }
