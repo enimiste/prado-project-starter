@@ -2,7 +2,7 @@
 <configuration>
     <!-- authorization rules definitions -->
     <authorization>
-        <allow users="@"/>
+        <allow roles="sadmin" pages="UsersPage"/>
         <deny users="*"/>
     </authorization>
 

@@ -23,6 +23,7 @@
             <url ServiceParameter="fo.Home" pattern="home"/>
             <url ServiceParameter="bo.Dashboard" pattern="dashboard"/>
             <url ServiceParameter="bo.users.LoginPage" pattern="login"/>
+            <url ServiceParameter="bo.users.UsersPage" pattern="users"/>
         </module>
     </modules>
 </configuration>

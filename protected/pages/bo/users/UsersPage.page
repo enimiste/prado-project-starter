@@ -1,0 +1,97 @@
+<%@ MasterClass="BackLayout" Title="Users Management" %>
+<com:TContent ID="PageHeader">
+  <i class="fa fa-users"></i>&nbsp;Users Management
+</com:TContent>
+<com:TContent ID="Main">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Users
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="table-responsive">
+            <com:TDataGrid ID="UsersDg"
+                           AllowSorting="true"
+                           AllowPaging="true"
+                           PageSize="15"
+                           PagerStyle.Mode="Numeric"
+                           AutoGenerateColumns="false"
+                           CssClass="table table-striped table-bordered table-hover"
+                           OnDeleteCommand="deleteSelectedUserBtnClicked"
+                           OnItemCreated="userItemCreated"
+                           OnEditCommand="editSelectedUserBtnClicked"
+                           OnUpdateCommand="saveSelectedUserBtnClicked"
+                           OnCancelCommand="cancelSelectedUserBtnClicked"
+            >
+              <com:TBoundColumn ID="FirstnameCol"
+                                HeaderText="First name"
+                                DataField="first_name"/>
+              <com:TBoundColumn ID="LastnameCol"
+                                HeaderText="Last name"
+                                DataField="last_name"/>
+
+              <com:TLiteralColumn HeaderText="Username"
+                                  DataField="username"
+                                  SortExpression=""
+              />
+
+              <com:TBoundColumn ID="EmailCol"
+                                HeaderText="Email Address"
+                                DataField="email"/>
+              <com:TDropDownListColumn ID="RoleCol"
+                                       HeaderText="Role"
+                                       DataTextField="role">
+                <com:TListItem Value="2" Text="Super Admin"/>
+                <com:TListItem Value="1" Text="Admin"/>
+                <com:TListItem Value="0" Text="Normal User"/>
+              </com:TDropDownListColumn>
+
+              <com:TEditCommandColumn UpdateText="Save" HeaderText="Edit"/>
+              <com:TButtonColumn ID="DeleteCol"
+                                 Text="Delete"
+                                 HeaderText="Delete"
+                                 CommandName="delete"
+                                 CausesValidation="false"
+              />
+            </com:TDataGrid>
+          </div>
+        </div>
+        <!-- /.col-lg-6 (nested) -->
+        <div class="col-lg-3 col-lg-offset-1">
+          <div class="form-group">
+            <input placeholder="An unique username" class="form-control">
+          </div>
+          <div class="form-group">
+            <input placeholder="Your email address" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Type a strong password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Retype your password here" class="form-control">
+          </div>
+          <div class="form-group">
+            <select class="form-control">
+              <option value="2">Super Administrator</option>
+              <option value="1">Administrator</option>
+              <option value="0">Normal User</option>
+            </select>
+          </div>
+          <hr/>
+          <div class="form-group">
+            <input placeholder="Your first name" class="form-control">
+          </div>
+          <div class="form-group">
+            <input placeholder="Your last name" class="form-control">
+          </div>
+          <button class="btn btn-primary" type="submit">Add New User</button>
+          <button class="btn btn-default" type="reset">Cancel</button>
+        </div>
+        <!-- /.col-lg-6 (nested) -->
+      </div>
+      <!-- /.row (nested) -->
+    </div>
+    <!-- /.panel-body -->
+  </div>
+</com:TContent>

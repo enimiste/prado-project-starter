@@ -21,21 +21,12 @@
       <li>
         <a href="<%= page_url('bo.Dashboard') %>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
       </li>
-      <li>
-        <a href="#"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          <li>
-            <a href="#">New User</a>
-          </li>
-          <li>
-            <a href="#">Edit User</a>
-          </li>
-          <li>
-            <a href="#">All Users</a>
-          </li>
-        </ul>
-        <!-- /.nav-second-level -->
-      </li>
+      <com:TControl Visible="<%= user()->IsSuperAdmin %>">
+        <li>
+          <a href="<%= page_url('bo.users.UsersPage') %>"><i class="fa fa-users fa-fw"></i> Users</a>
+          <!-- /.nav-second-level -->
+        </li>
+      </com:TControl>
       <li>
         <a href="<%= page_url('fo.Home') %>"><i class="fa fa-windows fa-fw"></i> Web Site</a>
       </li>
