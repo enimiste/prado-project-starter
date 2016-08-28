@@ -280,4 +280,12 @@ class UsersPage extends Page {
 		$this->PwdUpdatePanel->Visible  = false;
 		$this->UsernameToUpdatePassword = null;
 	}
+
+	/**
+	 * @param TButton         $sender
+	 * @param TEventParameter $param
+	 */
+	public function cancelAddNewUserBtnClicked( $sender, $param ) {
+		redirect_page( 'bo.users.UsersPage' );
+	}
 }

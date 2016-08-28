@@ -237,7 +237,13 @@
                          OnClick="saveNewUserBtnClicked"
                          ValidationGroup="add_new_user"
             />
-            <button class="btn btn-default" type="reset">Cancel</button>
+            <com:TButton ID="cancelAddNewUserBtn"
+                         Text="Cancel"
+                         CssClass="btn btn-default"
+                         OnClick="cancelAddNewUserBtnClicked"
+                         ValidationGroup="add_new_user"
+                         CausesValidation="false"
+            />
           </div>
         </div>
         <!-- /.col-lg-6 (nested) -->
