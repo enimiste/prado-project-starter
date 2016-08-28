@@ -50,7 +50,10 @@ trait DataGridBidirectionalSortTrait {
 	 *
 	 * @return array [sortExp, dir]
 	 */
-	protected function buildSortExp( $param ) {
+	protected function buildSortExp( $param = null ) {
+		if ( $param === null ) {
+			return [ ];
+		}
 		$exp  = $param->getSortExpression();
 		$dir  = 'asc';
 		$last = $this->getLastSortExpression();
@@ -65,6 +68,6 @@ trait DataGridBidirectionalSortTrait {
 		}
 		$this->setLastSortExpression( [ $exp, $dir ] );
 
-		return array( $exp, $dir );
+		return [ $exp, $dir ];
 	}
 }
