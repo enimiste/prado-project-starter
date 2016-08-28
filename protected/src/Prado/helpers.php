@@ -7,6 +7,7 @@
  */
 
 use App\Exception\AppException;
+use App\Prado\Page;
 
 if ( ! function_exists( 'app' ) ) {
 
@@ -211,7 +212,7 @@ if ( ! function_exists( 'ptrace' ) ) {
 if ( ! function_exists( 'page' ) ) {
 
 	/**
-	 * @return TPage
+	 * @return Page
 	 * @throws THttpException
 	 */
 	function page() {
