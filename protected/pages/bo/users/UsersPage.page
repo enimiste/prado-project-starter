@@ -47,16 +47,26 @@
                                 HeaderText="Email Address"
                                 SortExpression="email"
                                 DataField="email"/>
-              <com:TDropDownListColumn ID="RoleCol"
-                                       HeaderText="Role"
-                                       DataTextField="role"
-                                       SortExpression="role"
+              <com:TTemplateColumn ID="RoleCol"
+                                   SortExpression="role"
+                                   HeaderText="Role"
               >
-                <com:TListItem Value="2" Text="Super Admin"/>
-                <com:TListItem Value="1" Text="Admin"/>
-                <com:TListItem Value="0" Text="Normal User"/>
-              </com:TDropDownListColumn>
-
+                <!---
+                $this->Parent in this context represent a TDataGridItem
+                and $this->Parent->Data represent a UserRecord in our case
+                --->
+                <prop:ItemTemplate>
+                  <label class="label label-info"><%# $this->Parent->Data->roleName %></label>
+                </prop:ItemTemplate>
+                <prop:EditItemTemplate>
+                  <com:TDropDownList ID="DropDownList"
+                                     SelectedValue="<%# $this->Parent->Data->role %>">
+                    <com:TListItem Value="2" Text="Super Admin"/>
+                    <com:TListItem Value="1" Text="Admin"/>
+                    <com:TListItem Value="0" Text="Normal User"/>
+                  </com:TDropDownList>
+                </prop:EditItemTemplate>
+              </com:TTemplateColumn>
               <com:TEditCommandColumn UpdateText="Save" HeaderText="Edit"/>
               <com:TButtonColumn ID="DeleteCol"
                                  Text="Delete"

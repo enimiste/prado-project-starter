@@ -21,11 +21,57 @@ class UserRecord extends \TActiveRecord {
 
 	public static $RELATIONS = array();
 
+	/**
+	 * @param string $username the user that will be moved from Super Admin Role
+	 *
+	 * @return bool true if after the action will remain one Super Admin
+	 */
+	public static function checkSuperAdminInvariant( $username ) {
+		$criteria = new \TActiveRecordCriteria();
+
+		$criteria->Condition               = 'username <> :username AND role = 2';
+		$criteria->Parameters[':username'] = $username;
+
+		return self::finder()->count( $criteria ) >= 1;
+	}
+
 	public function __toString() {
 		return (string) $this->email;
 	}
 
 	public function getFullname() {
 		return $this->first_name . ' ' . $this->last_name;
+	}
+
+	/**
+	 * @return array
+	 */
+	public static function getRolesText() {
+		return [
+			0 => 'Normal User',
+			1 => 'Administrateur',
+			2 => 'Super Admin.',
+		];
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRoleName() {
+		return self::getRolesText()[ $this->role ];
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getIsAdmin() {
+		return $this->role == 1;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getIsSuperAdmin() {
+		return $this->role == 2;
 	}
 }

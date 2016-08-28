@@ -1,4 +1,5 @@
 <?php
+use App\Exception\AppException;
 use App\Models\UserRecord;
 use App\Prado\DataGridBidirectionalSortTrait;
 use App\Prado\Page;
@@ -28,12 +29,25 @@ class UsersPage extends Page {
 	/**
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
+	 *
+	 * @throws AppException
+	 * @throws TActiveRecordException
 	 */
 	public function onDeleteSelectedUserCommand( $sender, $param ) {
 		$item     = $param->getItem();
 		$username = $this->UsersDg->DataKeys[ $item->getItemIndex() ];
 
-		UserRecord::finder()->deleteByPk( $username );
+		/** @var UserRecord $user */
+		$user = UserRecord::finder()->findByPk( $username );
+		if ( $username == user()->Name ) {
+			throw new AppException( 403, "Can't delete the current connected user" );
+		}
+		if ( $user->role == 2 ) {
+			if ( ! UserRecord::checkSuperAdminInvariant( $username ) ) {
+				throw new AppException( 400, "Can't delete all Super Admin." );
+			}
+		}
+		$user->delete();
 		$this->UsersDg->EditItemIndex = - 1;
 		$this->loadWithSortAndBind();
 	}
@@ -67,12 +81,28 @@ class UsersPage extends Page {
 	/**
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
+	 *
+	 * @throws AppException
 	 */
 	public function saveSelectedUserCommand( $sender, $param ) {
 		$item     = $param->getItem();
 		$username = $this->UsersDg->DataKeys[ $item->getItemIndex() ];
 		/** @var UserRecord $user */
-		$user             = UserRecord::finder()->findByPk( $username );
+		$user = UserRecord::finder()->findByPk( $username );
+
+		if ( $item->RoleCol->DropDownList->SelectedValue != $user->role ) {
+			if ( $username == user()->Name ) {
+				throw new AppException( 403, "Can't delete the current connected user" );
+			}
+
+			if ( $user->role == 2 ) {
+				if ( ! UserRecord::checkSuperAdminInvariant( $username ) ) {
+					throw new AppException( 400, "Can't delete all Super Admin." );
+				}
+			}
+		}
+
+
 		$user->first_name = $item->FirstnameCol->TextBox->Text;
 		$user->last_name  = $item->LastnameCol->TextBox->Text;
 		$user->email      = $item->EmailCol->TextBox->Text;
