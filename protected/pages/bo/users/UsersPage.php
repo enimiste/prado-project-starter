@@ -22,6 +22,8 @@ class UsersPage extends Page {
 
 		if ( ! $this->IsPostBack ) {
 			$this->loadWithSortAndBind();
+
+			$this->hidePwdUpdatePanel();
 		}
 	}
 
@@ -218,5 +220,59 @@ class UsersPage extends Page {
 		} else {
 			$this->loadDataAndBind();
 		}
+	}
+
+	/**
+	 * @param TDataGrid                      $sender
+	 * @param TDataGridCommandEventParameter $param
+	 */
+	public function onActionSelectedUserCommand( $sender, $param ) {
+		if ( $param->getCommandName() == 'password' ) {
+			$this->PwdUpdatePanel->Visible  = true;
+			$item                           = $param->getItem();
+			$this->UsernameToUpdatePassword = $this->UsersDg->DataKeys[ $item->getItemIndex() ];
+		}
+	}
+
+	/**
+	 * @param TButton         $sender
+	 * @param TEventParameter $param
+	 */
+	public function cancelPwdUpdateBtnClicked( $sender, $param ) {
+		$this->hidePwdUpdatePanel();
+	}
+
+	/**
+	 * @param TButton         $sender
+	 * @param TEventParameter $param
+	 */
+	public function savePasswordChangesBtnClicked( $sender, $param ) {
+		$pwd      = $this->NewPasswordTxt->Text;
+		$username = $this->UsernameToUpdatePassword;
+		/** @var UserRecord $user */
+		$user           = UserRecord::finder()->findByPk( $username );
+		$user->password = $pwd;
+		$user->save();
+		$this->success( $username . ' Password has been update successfully' );
+		$this->hidePwdUpdatePanel();
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getUsernameToUpdatePassword() {
+		return $this->getViewState( 'UsernameToUpdatePassword', null );
+	}
+
+	/**
+	 * @param string $username
+	 */
+	public function setUsernameToUpdatePassword( $username ) {
+		$this->setViewState( 'UsernameToUpdatePassword', $username );
+	}
+
+	protected function hidePwdUpdatePanel() {
+		$this->PwdUpdatePanel->Visible  = false;
+		$this->UsernameToUpdatePassword = null;
 	}
 }

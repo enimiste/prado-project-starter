@@ -10,71 +10,138 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-lg-9">
-          <div class="table-responsive">
-            <com:TDataGrid ID="UsersDg"
-                           AllowSorting="true"
-                           AllowPaging="true"
-                           PageSize="15"
-                           PagerStyle.Mode="Numeric"
-                           AutoGenerateColumns="false"
-                           CssClass="table table-striped table-bordered table-hover"
-                           OnDeleteCommand="onDeleteSelectedUserCommand"
-                           OnItemCreated="userItemCreated"
-                           OnEditCommand="editSelectedUserCommand"
-                           OnUpdateCommand="saveSelectedUserCommand"
-                           OnCancelCommand="cancelSelectedUserCommand"
-                           DataKeyField="username"
-                           OnSortCommand="onSortUsersCommand"
-                           OnPagerCreated="onPagerCreated"
-                           OnPageIndexChanged="OnPageIndexChanged"
-            >
-              <com:TBoundColumn ID="FirstnameCol"
-                                HeaderText="First name"
-                                SortExpression="first_name"
-                                DataField="first_name"/>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="table-responsive">
+                <com:TDataGrid ID="UsersDg"
+                               AllowSorting="true"
+                               AllowPaging="true"
+                               PageSize="15"
+                               PagerStyle.Mode="Numeric"
+                               AutoGenerateColumns="false"
+                               CssClass="table table-striped table-bordered table-hover"
+                               OnDeleteCommand="onDeleteSelectedUserCommand"
+                               OnItemCreated="userItemCreated"
+                               OnEditCommand="editSelectedUserCommand"
+                               OnUpdateCommand="saveSelectedUserCommand"
+                               OnCancelCommand="cancelSelectedUserCommand"
+                               DataKeyField="username"
+                               OnSortCommand="onSortUsersCommand"
+                               OnPagerCreated="onPagerCreated"
+                               OnPageIndexChanged="OnPageIndexChanged"
+                               OnItemCommand="onActionSelectedUserCommand"
+                >
+                  <com:TBoundColumn ID="FirstnameCol"
+                                    HeaderText="First name"
+                                    SortExpression="first_name"
+                                    DataField="first_name"/>
 
-              <com:TBoundColumn ID="LastnameCol"
-                                HeaderText="Last name"
-                                SortExpression="last_name"
-                                DataField="last_name"/>
+                  <com:TBoundColumn ID="LastnameCol"
+                                    HeaderText="Last name"
+                                    SortExpression="last_name"
+                                    DataField="last_name"/>
 
-              <com:TLiteralColumn HeaderText="Username"
-                                  DataField="username"
-                                  SortExpression="username"
-              />
+                  <com:TLiteralColumn HeaderText="Username"
+                                      DataField="username"
+                                      SortExpression="username"
+                  />
 
-              <com:TBoundColumn ID="EmailCol"
-                                HeaderText="Email Address"
-                                SortExpression="email"
-                                DataField="email"/>
-              <com:TTemplateColumn ID="RoleCol"
-                                   SortExpression="role"
-                                   HeaderText="Role"
-              >
-                <!---
-                $this->Parent in this context represent a TDataGridItem
-                and $this->Parent->Data represent a UserRecord in our case
-                --->
-                <prop:ItemTemplate>
-                  <com:TLabel CssClass="label label-info" Text="<%# $this->Parent->Data->roleName %>"/>
-                </prop:ItemTemplate>
-                <prop:EditItemTemplate>
-                  <com:TDropDownList ID="DropDownList"
-                                     SelectedValue="<%# $this->Parent->Data->role %>">
-                    <com:TListItem Value="2" Text="Super Admin"/>
-                    <com:TListItem Value="1" Text="Admin"/>
-                    <com:TListItem Value="0" Text="Normal User"/>
-                  </com:TDropDownList>
-                </prop:EditItemTemplate>
-              </com:TTemplateColumn>
-              <com:TEditCommandColumn UpdateText="Save" HeaderText="Edit"/>
-              <com:TButtonColumn ID="DeleteCol"
-                                 Text="Delete"
-                                 HeaderText="Delete"
-                                 CommandName="delete"
-                                 CausesValidation="false"
-              />
-            </com:TDataGrid>
+                  <com:TBoundColumn ID="EmailCol"
+                                    HeaderText="Email Address"
+                                    SortExpression="email"
+                                    DataField="email"/>
+                  <com:TTemplateColumn ID="RoleCol"
+                                       SortExpression="role"
+                                       HeaderText="Role"
+                  >
+                    <!---
+                    $this->Parent in this context represent a TDataGridItem
+                    and $this->Parent->Data represent a UserRecord in our case
+                    --->
+                    <prop:ItemTemplate>
+                      <com:TLabel CssClass="label label-info" Text="<%# $this->Parent->Data->roleName %>"/>
+                    </prop:ItemTemplate>
+                    <prop:EditItemTemplate>
+                      <com:TDropDownList ID="DropDownList"
+                                         SelectedValue="<%# $this->Parent->Data->role %>">
+                        <com:TListItem Value="2" Text="Super Admin"/>
+                        <com:TListItem Value="1" Text="Admin"/>
+                        <com:TListItem Value="0" Text="Normal User"/>
+                      </com:TDropDownList>
+                    </prop:EditItemTemplate>
+                  </com:TTemplateColumn>
+                  <com:TEditCommandColumn UpdateText="Save" HeaderText="Edit"/>
+                  <com:TButtonColumn ID="DeleteCol"
+                                     Text="Delete"
+                                     HeaderText="Delete"
+                                     CommandName="delete"
+                                     CausesValidation="false"
+                  />
+                  <com:TButtonColumn ID="PwdCol"
+                                     Text="<i class='fa fa-key'></>"
+                                     HeaderText="Pwd"
+                                     CommandName="password"
+                                     CausesValidation="false"
+                  />
+                </com:TDataGrid>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <com:TPanel ID="PwdUpdatePanel" GroupingText="Update password">
+                <div class="well">
+                  <div class="form-group">
+                    <label>User name : </label>
+                    <span class="form-control-static" style="color:red;font-size:1.3em;">
+                      <com:TLiteral ID="PwdUsernameLt" Text="<%= $this->UsernameToUpdatePassword %>"/>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <com:TRequiredFieldValidator ValidationGroup="pwd_update"
+                                                 ControlToValidate="NewPasswordTxt"
+                                                 ErrorMessage="*"
+                                                 Display="Dynamic"/>
+                    <com:TTextBox ID="NewPasswordTxt"
+                                  TextMode="Password"
+                                  Attributes.placeholder="Type a strong password"
+                                  ValidationGroup="pwd_update"
+                                  CssClass="form-control"/>
+                  </div>
+                  <div class="form-group">
+                    <com:TRequiredFieldValidator ValidationGroup="pwd_update"
+                                                 ControlToValidate="ReNewPasswordTxt"
+                                                 ErrorMessage="*"
+                                                 Display="Dynamic"/>
+                    <com:TCompareValidator ValidationGroup="pwd_update"
+                                           ControlToValidate="ReNewPasswordTxt"
+                                           ControlToCompare="NewPasswordTxt"
+                                           ErrorMessage="Passwords don't matches"
+                                           Display="Dynamic"/>
+                    <com:TTextBox ID="ReNewPasswordTxt"
+                                  TextMode="Password"
+                                  Attributes.placeholder="Retype your password here"
+                                  ValidationGroup="pwd_update"
+                                  CssClass="form-control"/>
+                  </div>
+                  <hr/>
+
+                  <com:TButton ID="savePasswordChangesBtn"
+                               Text="Save"
+                               CssClass="btn btn-primary"
+                               OnClick="savePasswordChangesBtnClicked"
+                               ValidationGroup="pwd_update"
+                  />
+                  <com:TButton ID="cancelPwdUpdateBtn"
+                               Text="Cancel"
+                               CssClass="btn btn-default"
+                               OnClick="cancelPwdUpdateBtnClicked"
+                               ValidationGroup="pwd_update"
+                               CausesValidation="false"
+                  />
+                </div>
+              </com:TPanel>
+            </div>
           </div>
         </div>
         <!-- /.col-lg-6 (nested) -->
