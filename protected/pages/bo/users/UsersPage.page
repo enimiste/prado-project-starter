@@ -23,17 +23,18 @@
                            OnEditCommand="editSelectedUserBtnClicked"
                            OnUpdateCommand="saveSelectedUserBtnClicked"
                            OnCancelCommand="cancelSelectedUserBtnClicked"
+                           DataKeyField="username"
             >
               <com:TBoundColumn ID="FirstnameCol"
                                 HeaderText="First name"
                                 DataField="first_name"/>
+
               <com:TBoundColumn ID="LastnameCol"
                                 HeaderText="Last name"
                                 DataField="last_name"/>
 
               <com:TLiteralColumn HeaderText="Username"
                                   DataField="username"
-                                  SortExpression=""
               />
 
               <com:TBoundColumn ID="EmailCol"

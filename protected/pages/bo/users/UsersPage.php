@@ -26,7 +26,9 @@ class UsersPage extends Page {
 	 * @param TDataGridCommandEventParameter $param
 	 */
 	public function onDeleteSelectedUserCommand( $sender, $param ) {
-		$username = $this->UsersDg->DataKeys[ $param->getItem()->getItemIndex() ];
+		$item     = $param->getItem();
+		$username = $this->UsersDg->DataKeys[ $item->getItemIndex() ];
+
 		UserRecord::finder()->deleteByPk( $username );
 		$this->UsersDg->EditItemIndex = - 1;
 		$this->loadDataAndBind();
@@ -86,7 +88,10 @@ class UsersPage extends Page {
 	}
 
 	protected function loadDataAndBind() {
-		$this->UsersDg->DataSource = UserRecord::finder()->findAll();
+		$criteria                       = new TActiveRecordCriteria();
+		$criteria->OrdersBy['role']     = 'desc';
+		$criteria->OrdersBy['username'] = 'asc';
+		$this->UsersDg->DataSource      = UserRecord::finder()->findAll( $criteria );
 		$this->UsersDg->databind();
 	}
 
