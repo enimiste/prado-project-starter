@@ -161,7 +161,7 @@ class UsersPage extends Page {
 		$user->first_name = $this->FirstnameTxt->Text;
 		$user->last_name  = $this->LastnameTxt->Text;
 		$user->email      = $this->EmailTxt->Text;
-		$user->password   = $this->PasswordTxt->Text;
+		$user->password   = bcrypt( $this->PasswordTxt->Text );
 		$user->role       = $this->RolesDdl->SelectedValue;
 		$user->save();
 
@@ -251,7 +251,7 @@ class UsersPage extends Page {
 		$username = $this->UsernameToUpdatePassword;
 		/** @var UserRecord $user */
 		$user           = UserRecord::finder()->findByPk( $username );
-		$user->password = $pwd;
+		$user->password = bcrypt( $pwd );
 		$user->save();
 		$this->success( $username . ' Password has been update successfully' );
 		$this->hidePwdUpdatePanel();

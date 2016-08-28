@@ -23,7 +23,14 @@ class AppUser extends \TDbUser {
 	 * @return boolean whether the validation succeeds
 	 */
 	public function validateUser( $username, $password ) {
-		return UserRecord::finder()->findBy_username_AND_password( $username, $password ) != null;
+		$user = UserRecord::finder()->findBy_username( $username );
+
+		if ( $user instanceof UserRecord ) {
+
+			return bcrypt_check( $password, $user->password );
+		}
+
+		return false;
 	}
 
 	/**

@@ -274,3 +274,43 @@ if ( ! function_exists( 'site_url' ) ) {
 		return rtrim( param( 'base_url', request()->getApplicationUrl() ), '/' ) . '/' . $uri;
 	}
 }
+
+if ( ! function_exists( 'bcrypt' ) ) {
+	/**
+	 * @param  string $value
+	 * @param array   $options
+	 *
+	 * @return string
+	 * @throws AppException
+	 */
+	function bcrypt( $value, $options = [ ] ) {
+		$cost = isset( $options['rounds'] ) ? $options['rounds'] : 10;
+
+		$hash = password_hash( $value, PASSWORD_BCRYPT, [ 'cost' => $cost ] );
+
+		if ( $hash === false ) {
+			throw new AppException( 500, 'Bcrypt hashing not supported.' );
+		}
+
+		return $hash;
+	}
+}
+
+if ( ! function_exists( 'bcrypt_check' ) ) {
+	/**
+	 * Check the given plain value against a hash.
+	 *
+	 * @param  string $value
+	 * @param  string $hashedValue
+	 * @param  array  $options
+	 *
+	 * @return bool
+	 */
+	function bcrypt_check( $value, $hashedValue, array $options = [ ] ) {
+		if ( strlen( $hashedValue ) === 0 ) {
+			return false;
+		}
+
+		return password_verify( $value, $hashedValue );
+	}
+}
