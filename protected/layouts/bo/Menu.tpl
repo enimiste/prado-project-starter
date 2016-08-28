@@ -3,14 +3,18 @@
     <ul class="nav" id="side-menu">
       <li class="sidebar-search">
         <div class="input-group custom-search-form">
+          <com:TRequiredFieldValidator ControlToValidate="SearchTxt"
+                                       ValidationGroup="master_search"
+                                       Display="Dynamic"/>
           <com:TTextBox ID="SearchTxt"
                         CssClass="form-control"
+                        ValidationGroup="master_search"
                         Attributes.placeholder="Search..."/>
                                 <span class="input-group-btn">
                                     <com:TButton CssClass="btn btn-default"
                                                  ButtonTag="Button"
                                                  OnClick="searchBtnClicked"
-                                                 CausesValidation="false"
+                                                 ValidationGroup="master_search"
                                     >
                                         <i class="fa fa-search"></i>
                                     </com:TButton>
