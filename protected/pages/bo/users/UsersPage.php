@@ -155,18 +155,20 @@ class UsersPage extends Page {
 	 * @param TEventParameter $param
 	 */
 	public function saveNewUserBtnClicked( $sender, $param ) {
-		$user = new UserRecord();
+		if ( $this->IsValid ) {
+			$user = new UserRecord();
 
-		$user->username   = $this->UsernameTxt->Text;
-		$user->first_name = $this->FirstnameTxt->Text;
-		$user->last_name  = $this->LastnameTxt->Text;
-		$user->email      = $this->EmailTxt->Text;
-		$user->password   = bcrypt( $this->PasswordTxt->Text );
-		$user->role       = $this->RolesDdl->SelectedValue;
-		$user->save();
+			$user->username   = $this->UsernameTxt->Text;
+			$user->first_name = $this->FirstnameTxt->Text;
+			$user->last_name  = $this->LastnameTxt->Text;
+			$user->email      = $this->EmailTxt->Text;
+			$user->password   = bcrypt( $this->PasswordTxt->Text );
+			$user->role       = $this->RolesDdl->SelectedValue;
+			$user->save();
 
-		$this->info( 'New user added successfully' );
-		redirect_page( 'bo.users.UsersPage' );
+			$this->info( 'New user added successfully' );
+			redirect_page( 'bo.users.UsersPage' );
+		}
 	}
 
 	/**
@@ -247,14 +249,17 @@ class UsersPage extends Page {
 	 * @param TEventParameter $param
 	 */
 	public function savePasswordChangesBtnClicked( $sender, $param ) {
-		$pwd      = $this->NewPasswordTxt->Text;
-		$username = $this->UsernameToUpdatePassword;
-		/** @var UserRecord $user */
-		$user           = UserRecord::finder()->findByPk( $username );
-		$user->password = bcrypt( $pwd );
-		$user->save();
-		$this->success( $username . ' Password has been update successfully' );
-		$this->hidePwdUpdatePanel();
+		if ( $this->IsValid ) {
+			$pwd      = $this->NewPasswordTxt->Text;
+			$username = $this->UsernameToUpdatePassword;
+			/** @var UserRecord $user */
+			$user           = UserRecord::finder()->findByPk( $username );
+			$user->password = bcrypt( $pwd );
+			$user->save();
+			$this->success( $username . ' Password has been update successfully' );
+			$this->hidePwdUpdatePanel();
+			redirect_page( 'bo.users.UsersPage' );
+		}
 	}
 
 	/**
