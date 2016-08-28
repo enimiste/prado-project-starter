@@ -87,6 +87,23 @@
                 <%= $this->Page->Title %>
               </com:TContentPlaceHolder>
             </h1>
+            <com:TRepeater ID="FlashMsgRep"
+                           OnItemDataBound="onFlashMsgRepItemDataBound"
+                           EnableViewState="false">
+              <prop:ItemTemplate>
+                <div class="alert alert-dismissable alert-<%# $this->Data %>">
+                  <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                  <com:TRepeater ID="FlashMsgCatRep"
+                                 HeaderTemplate="<ul>"
+                                 FooterTemplate="</ul>"
+                                 EnableViewState="false">
+                    <prop:ItemTemplate>
+                      <li><%# $this->Data %></li>
+                    </prop:ItemTemplate>
+                  </com:TRepeater>
+                </div>
+              </prop:ItemTemplate>
+            </com:TRepeater>
             <com:TContentPlaceHolder ID="Main"/>
           </div>
           <!-- /.col-lg-12 -->

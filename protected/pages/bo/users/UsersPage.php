@@ -40,16 +40,21 @@ class UsersPage extends Page {
 		/** @var UserRecord $user */
 		$user = UserRecord::finder()->findByPk( $username );
 		if ( $username == user()->Name ) {
-			throw new AppException( 403, "Can't delete the current connected user" );
+			$this->error( "Can't delete the current connected user" );
+
+			return;
 		}
 		if ( $user->role == 2 ) {
 			if ( ! UserRecord::checkSuperAdminInvariant( $username ) ) {
-				throw new AppException( 400, "Can't delete all Super Admin." );
+				$this->error( "Can't delete all Super Admin." );
+
+				return;
 			}
 		}
 		$user->delete();
 		$this->UsersDg->EditItemIndex = - 1;
 		$this->loadWithSortAndBind();
+		$this->success( 'User deleted successfully' );
 	}
 
 	/**
@@ -92,12 +97,16 @@ class UsersPage extends Page {
 
 		if ( $item->RoleCol->DropDownList->SelectedValue != $user->role ) {
 			if ( $username == user()->Name ) {
-				throw new AppException( 403, "Can't delete the current connected user" );
+				$this->error( "Can't delete the current connected user" );
+
+				return;
 			}
 
 			if ( $user->role == 2 ) {
 				if ( ! UserRecord::checkSuperAdminInvariant( $username ) ) {
-					throw new AppException( 400, "Can't delete all Super Admin." );
+					$this->error( "Can't delete all Super Admin." );
+
+					return;
 				}
 			}
 		}
@@ -110,6 +119,7 @@ class UsersPage extends Page {
 		$user->save();
 		$this->UsersDg->EditItemIndex = - 1;
 		$this->loadWithSortAndBind();
+		$this->success( 'Changes saved successfully' );
 	}
 
 	/**
@@ -153,6 +163,7 @@ class UsersPage extends Page {
 		$user->role       = $this->RolesDdl->SelectedValue;
 		$user->save();
 
+		$this->info( 'New user added successufully' );
 		redirect_page( 'bo.users.UsersPage' );
 	}
 
