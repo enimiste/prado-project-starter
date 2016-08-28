@@ -25,7 +25,7 @@ class UsersPage extends Page {
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
 	 */
-	public function deleteSelectedUserBtnClicked( $sender, $param ) {
+	public function onDeleteSelectedUserCommand( $sender, $param ) {
 		$username = $this->UsersDg->DataKeys[ $param->getItem()->getItemIndex() ];
 		UserRecord::finder()->deleteByPk( $username );
 		$this->UsersDg->EditItemIndex = - 1;
@@ -63,7 +63,6 @@ class UsersPage extends Page {
 	 * @param TDataGridCommandEventParameter $param
 	 */
 	public function saveSelectedUserBtnClicked( $sender, $param ) {
-		//TODO
 		$item     = $param->getItem();
 		$username = $this->UsersDg->DataKeys[ $item->getItemIndex() ];
 		/** @var UserRecord $user */
@@ -89,5 +88,31 @@ class UsersPage extends Page {
 	protected function loadDataAndBind() {
 		$this->UsersDg->DataSource = UserRecord::finder()->findAll();
 		$this->UsersDg->databind();
+	}
+
+	/**
+	 * @param TButton         $sender
+	 * @param TEventParameter $param
+	 */
+	public function saveNewUserBtnClicked( $sender, $param ) {
+		$user = new UserRecord();
+
+		$user->username   = $this->UsernameTxt->Text;
+		$user->first_name = $this->FirstnameTxt->Text;
+		$user->last_name  = $this->LastnameTxt->Text;
+		$user->email      = $this->EmailTxt->Text;
+		$user->password   = $this->PasswordTxt->Text;
+		$user->role       = $this->RolesDdl->SelectedValue;
+		$user->save();
+
+		redirect_page( 'bo.users.UsersPage' );
+	}
+
+	/**
+	 * @param TCustomValidator              $sender
+	 * @param TServerValidateEventParameter $param
+	 */
+	public function validateUsername( $sender, $param ) {
+		$param->IsValid = UserRecord::finder()->findByPk( $param->Value ) === null;
 	}
 }
