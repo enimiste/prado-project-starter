@@ -163,7 +163,7 @@ class UsersPage extends Page {
 		$user->role       = $this->RolesDdl->SelectedValue;
 		$user->save();
 
-		$this->info( 'New user added successufully' );
+		$this->info( 'New user added successfully' );
 		redirect_page( 'bo.users.UsersPage' );
 	}
 

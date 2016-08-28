@@ -14,8 +14,8 @@ class BackLayout extends MasterPage {
 	/**
 	 * @param $param
 	 */
-	public function onLoad( $param ) {
-		parent::onLoad( $param );
+	public function onPreRender( $param ) {
+		parent::onPreRender( $param );
 
 		if ( $this->HasFlashMessages ) {
 			$this->_flashs                 = $this->FlashMessages;
@@ -23,6 +23,7 @@ class BackLayout extends MasterPage {
 			$this->FlashMsgRep->dataBind();
 		}
 	}
+
 
 	/**
 	 * @param TButton         $sender

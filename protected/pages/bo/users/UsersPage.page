@@ -9,7 +9,7 @@
     </div>
     <div class="panel-body">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
           <div class="table-responsive">
             <com:TDataGrid ID="UsersDg"
                            AllowSorting="true"
@@ -78,7 +78,7 @@
           </div>
         </div>
         <!-- /.col-lg-6 (nested) -->
-        <div class="col-lg-3 col-lg-offset-1">
+        <div class="col-lg-3">
           <div class="form-group">
             <com:TRequiredFieldValidator ValidationGroup="add_new_user"
                                          ControlToValidate="FirstnameTxt"
