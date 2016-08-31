@@ -37,5 +37,8 @@ class MasterLogin extends NPage {
 	public function validateUser( $sender, $param ) {
 
 		$param->IsValid = auth()->login( $this->UsernameTxt->Text, $this->PasswordTxt->Text );
+		if ( $param->IsValid ) {
+			UserRecord::loggedIn( $this->UsernameTxt->Text );
+		}
 	}
 }

@@ -47,11 +47,12 @@ class NDbUser extends \TDbUser {
 	public function createUser( $username ) {
 		$user = UserRecord::finder()->findByPk( $username );
 		if ( $user instanceof UserRecord ) {
-			$buser           = new self( $this->Manager );
-			$buser->Name     = $username;
-			$buser->Fullname = $user->first_name . ' ' . $user->last_name;
-			$buser->Roles    = self::getRolesCodes()[ $user->role ];
-			$buser->IsGuest  = false;
+			$buser            = new self( $this->Manager );
+			$buser->Name      = $username;
+			$buser->Fullname  = $user->first_name . ' ' . $user->last_name;
+			$buser->LastLogin = $user->last_login;
+			$buser->Roles     = self::getRolesCodes()[ $user->role ];
+			$buser->IsGuest   = false;
 
 			return $buser;
 		}
@@ -96,5 +97,28 @@ class NDbUser extends \TDbUser {
 	 */
 	public function setFullname( $value ) {
 		$this->setState( 'Fullname', $value, '' );
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLastLogin() {
+		return $this->getState( 'LastLogin', '' );
+	}
+
+	/**
+	 * @param string $value
+	 */
+	public function setLastLogin( $value ) {
+		$this->setState( 'LastLogin', $value, '' );
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getHasLastLogin() {
+		$last = $this->LastLogin;
+
+		return ! empty( $last );
 	}
 }

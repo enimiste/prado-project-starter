@@ -1,4 +1,7 @@
 <%@ MasterClass="BackLayout" Title="Espace Administration"%>
 <com:TContent ID="Main">
-  This the dashboard page
+  This the dashboard page.
+  <com:TControl Visible="<%= user()->HasLastLogin %>">
+    <p>Your last login was : <%= user()->LastLogin %></p>
+  </com:TControl>
 </com:TContent>

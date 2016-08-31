@@ -16,6 +16,7 @@ class UserRecord extends TActiveRecord {
 	public $role;
 	public $first_name;
 	public $last_name;
+	public $last_login;
 
 	public static function finder( $className = __CLASS__ ) {
 		return parent::finder( $className );
@@ -75,5 +76,21 @@ class UserRecord extends TActiveRecord {
 	 */
 	public function getIsSuperAdmin() {
 		return $this->role == 2;
+	}
+
+	/**
+	 * Update the last login column when user logged in
+	 *
+	 * @param string $username
+	 *
+	 * @throws TActiveRecordException
+	 */
+	public static function loggedIn( $username ) {
+		$user = self::finder()->findByPk( $username );
+
+		if ( $user instanceof UserRecord ) {
+			$user->last_login = mysql_timestamp( time() );
+			$user->save();
+		}
 	}
 }
