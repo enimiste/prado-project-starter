@@ -1,5 +1,5 @@
 <?php
-	
+
 /**
  * Created by PhpStorm.
  * User: elbachirnouni
@@ -325,5 +325,16 @@ if ( ! function_exists( 'using' ) ) {
 	 */
 	function using( $namespace ) {
 		\Prado::using( $namespace );
+	}
+}
+
+if ( ! function_exists( 'mysql_timestamp' ) ) {
+	/**
+	 * @param integer $time
+	 *
+	 * @return string
+	 */
+	function mysql_timestamp( $time ) {
+		return date( 'Y-m-d H:i:s', $time );
 	}
 }
