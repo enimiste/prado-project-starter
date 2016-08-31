@@ -1,8 +1,9 @@
 <?php
-use App\Exception\AppException;
-use App\Models\UserRecord;
-use App\Prado\DataGridBidirectionalSortTrait;
-use App\Prado\Page;
+using( 'App.Code.Exceptions.NAppException' );
+using( 'App.Code.Models.UserRecord' );
+using( 'App.Code.Web.UI.NDataGridBidirectionalSortTrait' );
+using( 'App.Code.Web.UI.NPage' );
+
 
 /**
  * Created by PhpStorm.
@@ -10,9 +11,9 @@ use App\Prado\Page;
  * Date: 27/08/2016
  * Time: 15:57
  */
-class UsersPage extends Page {
+class UsersPage extends NPage {
 
-	use DataGridBidirectionalSortTrait;
+	use NDataGridBidirectionalSortTrait;
 
 	/**
 	 * @param $param
@@ -32,7 +33,7 @@ class UsersPage extends Page {
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
 	 *
-	 * @throws AppException
+	 * @throws NAppException
 	 * @throws TActiveRecordException
 	 */
 	public function onDeleteSelectedUserCommand( $sender, $param ) {
@@ -89,7 +90,7 @@ class UsersPage extends Page {
 	 * @param TDataGrid                      $sender
 	 * @param TDataGridCommandEventParameter $param
 	 *
-	 * @throws AppException
+	 * @throws NAppException
 	 */
 	public function saveSelectedUserCommand( $sender, $param ) {
 		$item     = $param->getItem();

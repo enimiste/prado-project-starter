@@ -1,13 +1,11 @@
 <?php
+	
 /**
  * Created by PhpStorm.
  * User: elbachirnouni
  * Date: 25/08/2016
  * Time: 14:07
  */
-
-use App\Exception\AppException;
-use App\Prado\Page;
 
 if ( ! function_exists( 'app' ) ) {
 
@@ -78,13 +76,13 @@ if ( ! function_exists( 'running_service' ) ) {
 if ( ! function_exists( 'page_service' ) ) {
 	/**
 	 * @return TPageService
-	 * @throws AppException
+	 * @throws NAppException
 	 */
 	function page_service() {
 		if ( app()->getPageServiceID() == running_service()->getID() ) {
 			return running_service();
 		} else {
-			throw new AppException( 500, 'Page Service not found' );
+			throw new NAppException( 500, 'NPage Service not found' );
 		}
 	}
 }
@@ -212,7 +210,7 @@ if ( ! function_exists( 'ptrace' ) ) {
 if ( ! function_exists( 'page' ) ) {
 
 	/**
-	 * @return Page
+	 * @return NPage
 	 * @throws THttpException
 	 */
 	function page() {
@@ -253,12 +251,12 @@ if ( ! function_exists( 'db_conn' ) ) {
 	 * @param string $conn connection name in the database.xml config
 	 *
 	 * @return TDbConnection
-	 * @throws AppException
+	 * @throws NAppException
 	 */
 	function db_conn( $conn ) {
 		$db_conn = module( $conn );
 		if ( ! $db_conn instanceof TDbConnection ) {
-			throw new AppException( 500, 'Database Connection not found' );
+			throw new NAppException( 500, 'Database Connection not found' );
 		}
 
 		return $db_conn;
@@ -281,7 +279,7 @@ if ( ! function_exists( 'bcrypt' ) ) {
 	 * @param array   $options
 	 *
 	 * @return string
-	 * @throws AppException
+	 * @throws NAppException
 	 */
 	function bcrypt( $value, $options = [ ] ) {
 		$cost = isset( $options['rounds'] ) ? $options['rounds'] : 10;
@@ -289,7 +287,7 @@ if ( ! function_exists( 'bcrypt' ) ) {
 		$hash = password_hash( $value, PASSWORD_BCRYPT, [ 'cost' => $cost ] );
 
 		if ( $hash === false ) {
-			throw new AppException( 500, 'Bcrypt hashing not supported.' );
+			throw new NAppException( 500, 'Bcrypt hashing not supported.' );
 		}
 
 		return $hash;
@@ -312,5 +310,20 @@ if ( ! function_exists( 'bcrypt_check' ) ) {
 		}
 
 		return password_verify( $value, $hashedValue );
+	}
+}
+
+if ( ! function_exists( 'using' ) ) {
+	/**
+	 * Alias to \Prado::using function
+	 *
+	 * @param string $namespace
+	 *
+	 * @throws Exception
+	 * @throws TInvalidDataValueException
+	 * @throws TInvalidOperationException
+	 */
+	function using( $namespace ) {
+		\Prado::using( $namespace );
 	}
 }

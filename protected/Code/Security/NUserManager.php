@@ -1,5 +1,7 @@
 <?php
 
+using( 'System.Security.TUserManager' );
+
 /**
  * TUserManager class
  *
@@ -48,6 +50,7 @@
  * how users are authenticated and authorized in a Prado application.
  *
  * @author  Nouni El bachir <nouni.elbachir@gmail.com>
+ * @packege App.Code.Security
  */
 class NUserManager extends \TUserManager {
 	/**
@@ -94,6 +97,7 @@ class NUserManager extends \TUserManager {
  * - BCRYPT: the password is recorded as the bcrypt() hash value of the original password
  *
  * @author  Nouni El bachir <nouni.elbachir@gmail.com>
+ * @package App.Code.Security
  */
 class NUserManagerPasswordMode extends TUserManagerPasswordMode {
 

@@ -4,15 +4,15 @@
     <!-- include ext config
     <include file="path.to.extconfig" when="PHP expression" />
     -->
-    <include file="Application.config.paths"/>
+    <include file="App.config.paths"/>
 
-    <include file="Application.config.database"/>
-    <include file="Application.config.security"/>
-    <include file="Application.config.routes"/>
-    <include file="Application.config.modules"/>
+    <include file="App.config.database"/>
+    <include file="App.config.security"/>
+    <include file="App.config.routes"/>
+    <include file="App.config.modules"/>
 
-    <include file="Application.config.services"/>
+    <include file="App.config.services"/>
 
-    <include file="Application.config.parameters"/>
+    <include file="App.config.parameters"/>
 
 </application>

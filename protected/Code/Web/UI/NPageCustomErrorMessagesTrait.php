@@ -1,15 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: elbachirnouni
- * Date: 28/08/2016
- * Time: 14:14
- */
 
-namespace App\Prado;
-
-
-trait PageCustomErrorMessagesTrait {
+trait NPageCustomErrorMessagesTrait {
 
 	/**
 	 * @return bool

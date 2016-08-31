@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: elbachirnouni
- * Date: 25/08/2016
- * Time: 17:56
- */
-use App\Models\UserRecord;
 
-class AppUser extends \TDbUser {
+using( 'App.Code.Models.UserRecord' );
+
+class NDbUser extends \TDbUser {
 
 	protected $fullname;
 

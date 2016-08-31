@@ -1,5 +1,6 @@
 <?php
-use App\Prado\MasterPage;
+using( 'App.Code.Web.UI.NMasterPage' );
+using( 'System.Web.UI.WebControls.TDataBoundControl' );
 
 /**
  * Created by PhpStorm.
@@ -7,7 +8,7 @@ use App\Prado\MasterPage;
  * Date: 25/08/2016
  * Time: 17:15
  */
-class BackLayout extends MasterPage {
+class BackLayout extends NMasterPage {
 	/** @var  array */
 	protected $_flashs;
 

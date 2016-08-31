@@ -6,11 +6,6 @@
  * Time: 03:18
  */
 
-namespace App\Prado;
-
-
-use TDataGridSortCommandEventParameter;
-
 /**
  * How to use this trait :
  * - Add it to the page class that manage a datagrid
@@ -19,9 +14,10 @@ use TDataGridSortCommandEventParameter;
  * use in yout queries.
  *
  * Class DataGridBidirectionalSortTrait
- * @package App\Prado
+ * @author  Nouni EL bachir <nouni.elbachir@gmail.com>
+ * @package App.Code.Web.UI
  */
-trait DataGridBidirectionalSortTrait {
+trait NDataGridBidirectionalSortTrait {
 
 	/**
 	 * direction : desc or asc

@@ -1,5 +1,5 @@
 <?php
-use App\Prado\MasterPage;
+using( 'App.Code.Web.UI.NMasterPage' );
 
 /**
  * Created by PhpStorm.
@@ -7,7 +7,7 @@ use App\Prado\MasterPage;
  * Date: 25/08/2016
  * Time: 17:15
  */
-class FrontLayout extends MasterPage {
+class FrontLayout extends NMasterPage {
 
 	/**
 	 * @param TLinkButton     $sender

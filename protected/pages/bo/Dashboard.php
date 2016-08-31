@@ -1,7 +1,6 @@
 <?php
+using( 'App.Code.Web.UI.NPage' );
 
-use App\Prado\Page;
-
-class Dashboard extends Page {
+class Dashboard extends NPage {
 
 }

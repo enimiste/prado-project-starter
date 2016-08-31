@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: elbachirnouni
- * Date: 25/08/2016
- * Time: 15:04
- */
 
-namespace App\Prado;
+using( 'System.Web.UI.TPage' );
 
-
-class Page extends \TPage {
+class NPage extends TPage {
 
 	/**
 	 * @param string $msg

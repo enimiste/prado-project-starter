@@ -6,6 +6,7 @@ $frameworkPath = __DIR__ . '/vendor/pradosoft/prado/framework/prado.php';
 $basePath    = dirname( __FILE__ );
 $assetsPath  = $basePath . '/assets';
 $runtimePath = $basePath . '/protected/runtime';
+$codePath    = $basePath . '/protected/Code';
 
 if ( ! is_file( $frameworkPath ) ) {
 	die( "Unable to find prado framework path $frameworkPath." );
@@ -20,6 +21,8 @@ if ( ! is_writable( $runtimePath ) ) {
 
 require_once( $frameworkPath );
 require_once __DIR__ . '/vendor/autoload.php';
+require_once $codePath . '/NApplication.php';
 
-$application = new \App\Prado\Application();
+$application = new NApplication();
+
 $application->run();

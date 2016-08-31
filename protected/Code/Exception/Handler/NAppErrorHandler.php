@@ -1,8 +1,7 @@
 <?php
 
-use App\Exception\AppException;
-
-\Prado::using( 'System.Exceptions.TErrorHandler' );
+using( 'System.Exceptions.TErrorHandler' );
+using( 'App.Code.Exception.NAppException' );
 
 /**
  * Created by PhpStorm.
@@ -10,7 +9,7 @@ use App\Exception\AppException;
  * Date: 24/08/2016
  * Time: 16:09
  */
-class AppErrorHandler extends \TErrorHandler {
+class NAppErrorHandler extends TErrorHandler {
 	/**
 	 * @param $statusCode
 	 * @param $exception
@@ -18,7 +17,7 @@ class AppErrorHandler extends \TErrorHandler {
 	 * @return string
 	 */
 	protected function getErrorTemplate( $statusCode, $exception ) {
-		if ( $exception instanceof AppException ) {
+		if ( $exception instanceof NAppException ) {
 			return <<<EOF
 			<html><head><title>App error</title></head><body>
 			<div style="color: red;"> %%ErrorMessage%% </div>
@@ -36,8 +35,8 @@ EOF;
 	 * @param $exception
 	 */
 	protected function handleExternalError( $statusCode, $exception ) {
-		if ( $exception instanceof AppException ) {
-			plog( $exception->getErrorMessage(), \TLogger::ERROR, 'AppException' );
+		if ( $exception instanceof NAppException ) {
+			plog( $exception->getErrorMessage(), \TLogger::ERROR, 'NAppException' );
 		}
 		parent::handleExternalError( $statusCode, $exception );
 	}

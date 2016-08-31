@@ -6,10 +6,10 @@
         <module id="auth" class="System.Security.TAuthManager"
                 UserManager="users"
                 LoginPage="bo.users.LoginPage"/>
-        <module id="users" class="System.Security.TDbUserManager" UserClass="Application.src.AppUser"/>
+        <module id="users" class="System.Security.TDbUserManager" UserClass="App.Code.Security.NDbUser"/>
 
         <!-- For static users declaration
-         <module id="users" class="Application.src.NUserManager"
+         <module id="users" class="App.Code.Security.NUserManager"
             PasswordMode="Clear">
             <user name="sadmin" password="$2y$10$WRrU4uGk8FoVl7Jnu0DaB.Oa7LxszeuF8X9hcXaNtLhaUaFNBlkzO" />
             <user name="admin" password="$2y$10$0uKw93VElULCIakmqnSQqe.yZaFO/A7DSKJFxw99Crs3LN4n/kvMq" />

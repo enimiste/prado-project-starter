@@ -7,8 +7,9 @@
           <alias id="myalias" path="./lib" />
           -->
 
-        <using namespace="Application.layouts.*"/>
-        <using namespace="Application.layouts.bo.*"/>
-        <using namespace="Application.layouts.fo.*"/>
+        <using namespace="App.Code.Exception.*"/>
+        <using namespace="App.layouts.*"/>
+        <using namespace="App.layouts.bo.*"/>
+        <using namespace="App.layouts.fo.*"/>
     </paths>
 </configuration>

@@ -1,5 +1,6 @@
 <?php
-use App\Prado\Page;
+
+using( 'App.Code.Web.UI.NPage' );
 
 /**
  * Created by PhpStorm.
@@ -7,7 +8,7 @@ use App\Prado\Page;
  * Date: 22/08/2016
  * Time: 13:10
  */
-class MasterLogin extends Page {
+class MasterLogin extends NPage {
 
 	/**
 	 * @param TButton         $sender
