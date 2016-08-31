@@ -1,0 +1,4 @@
+/* insert some initial data records for testing */
+INSERT INTO users(username, email, password, role, first_name, last_name) VALUES ('sadmin', 'sadmin@example.com', '$2y$10$WRrU4uGk8FoVl7Jnu0DaB.Oa7LxszeuF8X9hcXaNtLhaUaFNBlkzO', 2, 'Super', 'Administrator');-- pwd : sadmin
+INSERT INTO users(username, email, password, role, first_name, last_name) VALUES ('admin', 'admin@example.com', '$2y$10$0uKw93VElULCIakmqnSQqe.yZaFO/A7DSKJFxw99Crs3LN4n/kvMq', 1, 'Administrator', 'User');-- pwd : admin
+INSERT INTO users(username, email, password, role, first_name, last_name) VALUES ('user', 'demo@example.com', '$2y$10$T7kyuZnecqx2wLs5SFlv8.wJGGoBc8wYKqhG7R71Se/A.OdRZ5SLq', 0, 'Normal', 'User');-- pwd : user
