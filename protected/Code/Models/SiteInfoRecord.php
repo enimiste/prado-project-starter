@@ -37,7 +37,7 @@ class SiteInfoRecord extends NActiveRecord {
 	 * @param mixed $_name
 	 */
 	public function setName( $_name ) {
-		$this->_name = preg_replace( "#[^a-z_0-9]#", '_', strtolower( $_name ) );
+		$this->_name = preg_replace( "#[^a-z_0-9]#", '_', trim( strtolower( $_name ) ) );
 	}
 
 	/**

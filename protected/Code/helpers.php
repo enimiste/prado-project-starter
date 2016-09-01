@@ -354,7 +354,7 @@ if ( ! function_exists( 'site_info' ) ) {
 		if ( ! $setting instanceof SiteInfoRecord ) {
 			return $default;
 		} else {
-			$setting->value;
+			return $setting->value;
 		}
 	}
 }
