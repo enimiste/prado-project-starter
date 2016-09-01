@@ -1,0 +1,139 @@
+<%@ MasterClass="BackLayout" Title="Site Informations" %>
+<com:TContent ID="PageHeader">
+  <i class="fa fa-th-list"></i>&nbsp;Site General Settings
+</com:TContent>
+<com:TContent ID="Main">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Settings
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-<%= user()->IsSuperAdmin ? 9 : 12 %>">
+          <com:TDataGrid ID="SettingsDg"
+                         AllowSorting="true"
+                         AllowPaging="true"
+                         PageSize="15"
+                         PagerStyle.Mode="Numeric"
+                         AutoGenerateColumns="false"
+                         CssClass="table table-striped table-bordered table-hover"
+                         OnDeleteCommand="onDeleteSelectedSettingCommand"
+                         OnItemCreated="settingItemCreated"
+                         OnItemDataBound="settingItemDataBound"
+                         OnEditCommand="editSelectedSettingCommand"
+                         OnUpdateCommand="saveSelectedSettingCommand"
+                         OnCancelCommand="cancelSelectedSettingCommand"
+                         DataKeyField="name"
+                         OnSortCommand="onSortSettingsCommand"
+                         OnPagerCreated="onPagerCreated"
+                         OnPageIndexChanged="OnPageIndexChanged"
+          >
+            <com:TLiteralColumn ID="NameCol"
+                                HeaderText="Name"
+                                SortExpression="name"
+                                DataField="name"/>
+
+            <com:TBoundColumn ID="ValueCol"
+                              HeaderText="Value"
+                              DataField="value"/>
+
+            <com:TCheckBoxColumn ID="EditableCol"
+                                 Visible="<%= user()->IsSuperAdmin %>"
+                                 SortExpression="editable"
+                                 DataField="editable">
+              <prop:HeaderText><i class="fa fa-edit"></i></prop:HeaderText>
+            </com:TCheckBoxColumn>
+            <com:TCheckBoxColumn ID="DeletableCol"
+                                 Visible="<%= user()->IsSuperAdmin %>"
+                                 SortExpression="deletable"
+                                 DataField="deletable">
+              <prop:HeaderText><i class="fa fa-remove"></i></prop:HeaderText>
+            </com:TCheckBoxColumn>
+            <com:TCheckBoxColumn ID="ReadableCol"
+                                 Visible="<%= user()->IsSuperAdmin %>"
+                                 SortExpression="readable"
+                                 DataField="readable">
+              <prop:HeaderText><i class="fa fa-eye"></i></prop:HeaderText>
+            </com:TCheckBoxColumn>
+            <com:TEditCommandColumn ID="EditCmdCol" UpdateText="Save" HeaderText="Edit"/>
+            <com:TButtonColumn ID="DeleteCol"
+                               Text="Delete"
+                               HeaderText="Delete"
+                               CommandName="delete"
+                               CausesValidation="false"
+            />
+            />
+          </com:TDataGrid>
+        </div>
+        <com:TControl Visible="<%= user()->IsSuperAdmin %>">
+          <div class="col-lg-3">
+            <div class="well">
+              <div class="form-group">
+                <com:TRequiredFieldValidator ValidationGroup="add_new_setting"
+                                             ControlToValidate="NameTxt"
+                                             ErrorMessage="*"
+                                             Display="Dynamic"/>
+                <com:TCustomValidator ValidationGroup="add_new_setting"
+                                      ControlToValidate="NameTxt"
+                                      ErrorMessage="Choose an unique name"
+                                      Display="Dynamic"
+                                      OnServerValidate="validateSettingName"/>
+                <com:TTextBox ID="NameTxt"
+                              Attributes.placeholder="Unique name : Only alphanumeric"
+                              ValidationGroup="add_new_setting"
+                              CssClass="form-control"/>
+              </div>
+              <div class="form-group">
+                <com:TRequiredFieldValidator ValidationGroup="add_new_setting"
+                                             ControlToValidate="ValueTxt"
+                                             ErrorMessage="*"
+                                             Display="Dynamic"/>
+                <com:TTextBox ID="ValueTxt"
+                              ValidationGroup="add_new_setting"
+                              Attributes.placeholder="Value"
+                              TextMode="MultiLine"
+                              CssClass="form-control"/>
+              </div>
+              <fieldset>
+                <legend>Admin Actions</legend>
+                <div class="checkbox">
+                  <com:TLabel ForControl="EditableChck">
+                    <com:TCheckBox ID="EditableChck" Value="editable"/>
+                    Admin Can Edit This Setting
+                  </com:TLabel>
+                </div>
+                <div class="checkbox">
+                  <com:TLabel ForControl="DeletableChck">
+                    <com:TCheckBox ID="DeletableChck" Value="deletable"/>
+                    Admin Can Delete This Setting
+                  </com:TLabel>
+                </div>
+                <div class="checkbox">
+                  <com:TLabel ForControl="ReadableChck">
+                    <com:TCheckBox ID="ReadableChck" Value="readable"/>
+                    Admin Can Read This Setting
+                  </com:TLabel>
+                </div>
+              </fieldset>
+              <hr/>
+
+              <com:TButton ID="saveNewSettingBtn"
+                           Text="Add New Setting"
+                           CssClass="btn btn-primary"
+                           OnClick="saveNewSettingBtnClicked"
+                           ValidationGroup="add_new_setting"
+              />
+              <com:TButton ID="cancelAddNewSettingBtn"
+                           Text="Cancel"
+                           CssClass="btn btn-default"
+                           OnClick="cancelAddNewSettingBtnClicked"
+                           ValidationGroup="add_new_setting"
+                           CausesValidation="false"
+              />
+            </div>
+          </div>
+        </com:TControl>
+      </div>
+    </div>
+  </div>
+</com:TContent>

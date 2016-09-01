@@ -24,6 +24,7 @@
             <url ServiceParameter="bo.Dashboard" pattern="dashboard"/>
             <url ServiceParameter="bo.users.LoginPage" pattern="login"/>
             <url ServiceParameter="bo.users.UsersPage" pattern="users"/>
+            <url ServiceParameter="bo.site_infos.SiteInfosPage" pattern="siteinfos"/>
         </module>
     </modules>
 </configuration>

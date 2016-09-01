@@ -31,6 +31,12 @@
           <!-- /.nav-second-level -->
         </li>
       </com:TControl>
+      <com:TControl Visible="<%= user()->IsAdmin %>">
+        <li>
+          <a href="<%= page_url('bo.site_infos.SiteInfosPage') %>"><i class="fa fa-th-list fa-fw"></i> Site Infos</a>
+          <!-- /.nav-second-level -->
+        </li>
+      </com:TControl>
       <li>
         <a href="<%= page_url('fo.Home') %>"><i class="fa fa-windows fa-fw"></i> Web Site</a>
       </li>

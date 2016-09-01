@@ -338,3 +338,23 @@ if ( ! function_exists( 'mysql_timestamp' ) ) {
 		return date( 'Y-m-d H:i:s', $time );
 	}
 }
+
+if ( ! function_exists( 'site_info' ) ) {
+	/**
+	 * @param string $name setting name
+	 *
+	 * @param string $default
+	 *
+	 * @return string
+	 */
+	function site_info( $name, $default = '' ) {
+		using( 'App.Code.Models.SiteInfoRecord' );
+
+		$setting = SiteInfoRecord::finder()->findByPk( $name );
+		if ( ! $setting instanceof SiteInfoRecord ) {
+			return $default;
+		} else {
+			$setting->value;
+		}
+	}
+}
