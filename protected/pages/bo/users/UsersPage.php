@@ -54,10 +54,14 @@ class UsersPage extends NPage {
 				return;
 			}
 		}
-		$user->delete();
-		$this->UsersDg->EditItemIndex = - 1;
-		$this->loadWithSortAndBind();
-		$this->success( 'User deleted successfully' );
+		$deleted = $user->delete();
+		if ( $deleted ) {
+			$this->UsersDg->EditItemIndex = - 1;
+			$this->loadWithSortAndBind();
+			$this->success( 'User deleted successfully' );
+		} else {
+			$this->error( 'The user not deleted' );
+		}
 	}
 
 	/**
@@ -119,10 +123,15 @@ class UsersPage extends NPage {
 		$user->last_name  = $item->LastnameCol->TextBox->Text;
 		$user->email      = $item->EmailCol->TextBox->Text;
 		$user->role       = $item->RoleCol->DropDownList->SelectedValue;
-		$user->save();
-		$this->UsersDg->EditItemIndex = - 1;
-		$this->loadWithSortAndBind();
-		$this->success( 'Changes saved successfully' );
+		$saved            = $user->save();
+
+		if ( $saved ) {
+			$this->success( 'Changes saved successfully' );
+			$this->UsersDg->EditItemIndex = - 1;
+			$this->loadWithSortAndBind();
+		} else {
+			$this->warning( 'No changes saved' );
+		}
 	}
 
 	/**
@@ -165,10 +174,14 @@ class UsersPage extends NPage {
 			$user->email      = $this->EmailTxt->Text;
 			$user->password   = bcrypt( $this->PasswordTxt->Text );
 			$user->role       = $this->RolesDdl->SelectedValue;
-			$user->save();
+			$added            = $user->save();
 
-			$this->info( 'New user added successfully' );
-			redirect_page( 'bo.users.UsersPage' );
+			if ( $added ) {
+				$this->info( 'New user added successfully' );
+				redirect_page( 'bo.users.UsersPage' );
+			} else {
+				$this->error( 'User not added' );
+			}
 		}
 	}
 
@@ -256,10 +269,14 @@ class UsersPage extends NPage {
 			/** @var UserRecord $user */
 			$user           = UserRecord::finder()->findByPk( $username );
 			$user->password = bcrypt( $pwd );
-			$user->save();
-			$this->success( $username . ' Password has been update successfully' );
-			$this->hidePwdUpdatePanel();
-			redirect_page( 'bo.users.UsersPage' );
+			$saved          = $user->save();
+			if ( $saved ) {
+				$this->success( $username . ' Password has been update successfully' );
+				$this->hidePwdUpdatePanel();
+				redirect_page( 'bo.users.UsersPage' );
+			} else {
+				$this->error( 'No changes saved' );
+			}
 		}
 	}
 
