@@ -10,7 +10,7 @@
 if ( ! function_exists( 'app' ) ) {
 
 	/**
-	 * @return TApplication
+	 * @return NApplication
 	 */
 	function app() {
 		return Prado::getApplication();
