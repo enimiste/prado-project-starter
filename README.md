@@ -9,6 +9,8 @@ To use Mysql Database uncomment :
 `<database ConnectionString="mysql:host=localhost;dbname=test"
                                    username="dbuser" password="dbpass" />`
                                    in config file `config/database.xml`.
+ Mysql database should use `utf8-general-ci`
+ 
 ## After install
 - Change the parameter `base_url` in the file `config/parameters.xml`
 - Update database information in the config file `config/database.xml`
