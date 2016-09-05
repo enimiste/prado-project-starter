@@ -8,6 +8,8 @@
           -->
 
         <using namespace="App.Code.Exception.*"/>
+        <using namespace="App.Code.Web.UI.*"/>
+        <using namespace="App.Code.Web.UI.WebControls.*"/>
         <using namespace="App.layouts.*"/>
         <using namespace="App.layouts.bo.*"/>
         <using namespace="App.layouts.fo.*"/>
