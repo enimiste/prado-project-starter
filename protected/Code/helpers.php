@@ -358,3 +358,20 @@ if ( ! function_exists( 'site_info' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'check_is_int' ) ) {
+
+	/**
+	 * Check whither the input is a valid integer value
+	 *
+	 * @param string|int|float $other
+	 *
+	 * @return bool
+	 */
+	function check_is_int( $other ) {
+		return is_numeric( $other ) &&
+		       ( is_int( $other ) ||
+		         ( is_string( $other ) &&
+		           (string) intval( $other ) == $other ) );
+	}
+}
