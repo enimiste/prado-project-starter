@@ -57,7 +57,7 @@ Ex :
  ```
  This parameter is used to build assets urls (css, javascripts, ...) via the function `site_url($uri)`
 
-### Test :
+## Test in browser :
 Now you can test the project.  
 1. Check if your web server under it the project is deployed is running.
 2. Check if your RDBS is running if you use one.
