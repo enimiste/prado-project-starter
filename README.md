@@ -32,11 +32,11 @@ In this section i will focus on two database types : **Sqlite** and **Mysql**.
   You have two options : *Mysql* extension or *Mysqli* extension  
   So you should be sure that the desired extension is enabled in `php.ini` file before using it.
   1. Open the `protected/config.database.xml` file.
-  2. Comment the sqlite config :  
+  2. Comment the sqlite config : 
      ```xml
      <database ConnectionString="sqlite:protected/data/app.db"/>
      ```
-  3. Uncomment the Mysql config (mysql or mysqli) :
+  3. Uncomment the Mysql config (mysql or mysqli) : 
      ```xml
      <!-- <database ConnectionString="mysqli:host=localhost;dbname=test"
                       username="dbuser" password="dbpass" /> -->
@@ -65,13 +65,13 @@ Now you can test the project.
 4. The web app will show you the default page of Frontoffice.
 5. To see the Backoffice, click on the link **"Espace d'administration"** (Backoffice space in frensh, sorry) :
    + A login page will show.
-   + Type one of these credentials to access the web app as authenticated user :
+   + Type one of these credentials to access the web app as authenticated user :  
       |Username|Password|Role|
       |--------|--------|----|
       | sadmin|sadmin|Super Admin|
       | admin|admin|Normal Admin|
       | user|user|Normal User|
-   + And bingo you can manage : **users**, **site settings**
+   + And bingo you can manage : **users**, **site settings**  
 
 
 [//]:# (These are the links used in this document.)
