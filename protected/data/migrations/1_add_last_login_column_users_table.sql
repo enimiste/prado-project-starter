@@ -1,1 +1,1 @@
-ALTER TABLE users ADD last_login TIMESTAMP DEFAULT  NULL;
+ALTER TABLE users ADD last_login TIMESTAMP  NULL;
