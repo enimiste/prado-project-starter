@@ -77,7 +77,7 @@ Now you can test the project.
    + And bingo you can manage : **users**, **site settings**  
 
 ## LICENSE : 
-[MIT](./blob/master/LICENSE)
+[MIT](./LICENSE)
 
 [//]:# (These are the links used in this document.)
 
