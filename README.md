@@ -99,32 +99,51 @@ user();
 And so on ...
 Lets now take a tour of these function :  
 
+#### Request/Response :
 Function | Return Type |Description
 :--- | --- | :---
-`app()` | `TApplication` | Return the current runining Prado Application instance.
+`session()` |`THttpSession`| Return the current running user session.
 `request()` |`THttpRequest`| Return the current request.
-`module($id)` |`IModule`| Get a module by its id. 
 `response()` |`THttpResponse`| Return the current response. 
+`input($name [, $default = null] )` |`string`| Retrieve a request input by its name or return a default value. 
+`page()` | `TPage|NPage` | Return the current processed **Page**.
 `redirect_page($page [, array $param])` || Redirect the user to a given page. **$page** is the namespace format to the page, _ex : bo.users.ListPage_
 `redirect_url($url)` || Redirect the user to a given url. 
-`running_service()` |`IService`| Return the current running service that processing the request. For instance it returns the `TPageService`
-`page_service()` |`TPageService`| If another service is processing the request, this function throw a function.
 `page_url($page [, array $param] )` |`string`| Contruct an URL pointing to a given page. **$page** is the namespace format to the page, _ex : bo.users.ListPage_ 
-`input($name [, $default = null] )` |`string`| Retrieve a request input by its name or return a default value. 
+`site_url($uri)` | `string` | Build an url to a resource located under the root directory of the project. The param **base_url** is used here.
+
+
+#### Security :
+Function | Return Type |Description
+:--- | --- | :---
+`auth()` | `TAuthManager` | Return the Authentication Manager.
 `user()` |`IUser|TDbUser|NDbUser`| Return the instance of the authenticated user.
 `is_guest()` |`bool`| True if the user is not authenticated in the system. 
 `is_admin()` |`bool`| True if the authenticated user has one of the roles : **Super Admin** or **Normal Admin** 
 `is_super_admin()` |`bool`| True if the authenticated user has the role : **Super Admin**
-`session()` |`THttpSession`| Return the current running user session.
-`localize($text [, array $parameters [, $catalogue = null [, $charset = null]]] )` |`string`| Translate and localize a given _$text_ based on the i18n and i10l of your application. 
-`page()` | `TPage|NPage` | Return the current processed **Page**.
+
+#### General use :
+Function | Return Type |Description
+:--- | --- | :---
+`app()` | `TApplication` | Return the current runining Prado Application instance.
+`module($id)` |`IModule`| Get a module by its id. 
+`running_service()` |`IService`| Return the current running service that processing the request. For instance it returns the `TPageService`
+`page_service()` |`TPageService`| If another service is processing the request, this function throw a function.
 `param($id [, $default = null] )` | `string` | Retrieve a given parameter from the `config/parameters` file by its name. If not found, the $default value will be returned.
-`auth()` | `TAuthManager` | Return the Authentication Manager.
-`site_url($uri)` | `string` | Build an url to a resource located under the root directory of the project. The param **base_url** is used here.
 `using($namespace)` |  | Shortcut to `\Prado::using( $namespace );`. I think is more readable this way.
-`mysql_timestamp(int $time)` | `string` | Format the given time to the TIMESTAMP format requied by Mysql. Shortcut to `date( 'Y-m-d H:i:s', $time );`
 `site_info($name [, $default = ''] )` | `string` | Return a site setting by its name. If not found returns the default value.
+`mysql_timestamp(int $time)` | `string` | Format the given time to the TIMESTAMP format requied by Mysql. Shortcut to `date( 'Y-m-d H:i:s', $time );`
 `check_is_int(mixed $v)` | `bool` | True if the **$v** is numeric and (is int or is string and is only integer). See source code for more details.
+
+#### Localisation :
+Function | Return Type |Description
+:--- | --- | :---
+`localize($text [, array $parameters [, $catalogue = null [, $charset = null]]] )` |`string`| Translate and localize a given _$text_ based on the i18n and i10l of your application. 
+
+
+#### File System :
+Function | Return Type |Description
+:--- | --- | :---
 `file_extension($filename)` | `string` | Returns the file extension by spliting its name.
 
 ## LICENSE : 
