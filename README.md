@@ -76,6 +76,47 @@ Now you can test the project.
        user   |user    |Normal User 
    + And bingo you can manage : **users**, **site settings**  
 
+## Documentation :
+The project is divided in two parts : 
+* FO : Front office
+* BO : Back office
+
+So `protected/pages`, `protected/pages` and `themes` directories are splited into two sub directories : **fo** and **bo**. 
+
+The **themes** directory holde the css, js files needed to render the IHM of each side of you web app. Ex: `themes\bo` contains sb-admin css and js files used in backoffice IHM.
+
+The theme used in the backoffice is the [SB-admin](https://startbootstrap.com/template-overviews/sb-admin-2/). For the front office is not implemented for instance.
+
+### Helpers functions :
+I added a bunch of helper functions to help developper access most used features of Prado easaly.  
+Ex: 
+```php
+app();
+//Shortcut to Prado::getApplication();
+user();
+//shortcut to Prado::getApplication()->getUser();
+```
+And so on ...
+Lets now take a tour of these function :  
+Function | Return Type |Description
+:--- | --- | :---
+`app()` | `TApplication` | Return the current runining Prado Application instance.
+`request()` |`THttpRequest`| Return the current request.
+`module($id)` |`IModule`| Get a module by its id. 
+`response()` |`THttpResponse`| Return the current response. 
+`redirect_page($page [, array $param])` || Redirect the user to a given page. **$page** is the namespace format to the page, _ex : bo.users.ListPage_
+`redirect_url($url)` || Redirect the user to a given url. 
+`running_service()` |`IService`| Return the current running service that processing the request. For instance it returns the `TPageService`
+`page_service()` |`TPageService`| If another service is processing the request, this function throw a function.
+`page_url( $page [, array $param] )` |`string`| Contruct an URL pointing to a given page. **$page** is the namespace format to the page, _ex : bo.users.ListPage_ 
+`input( $name [, $default = null] )` |`string`| Retrieve a request input by its name or return a default value. 
+`user()` |`IUser|NDbUser`| Return the instance of the authenticated user.
+`is_guest()` |`bool`| True if the user is not authenticated in the system. 
+`is_admin()` |`bool`| True if the authenticated user has one of the roles : **Super Admin** or **Normal Admin** 
+`is_super_admin()` |`bool`| True if the authenticated user has the role : **Super Admin**
+`session()` |`THttpSession`| Return the current running user session.
+`` |``| 
+
 ## LICENSE : 
 [MIT](./LICENSE)
 
