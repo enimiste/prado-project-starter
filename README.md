@@ -1,8 +1,10 @@
 # Prado Starter Project
 
-[![Join the chat at https://gitter.im/prado-project-starter/Lobby](https://badges.gitter.im/prado-project-starter/Lobby.svg)](https://gitter.im/prado-project-starter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A Project skeleton to build [PRADO Framework][PRADO] based web application.  
 _Prado3 is a Component Framework for PHP 5 (Like ASP .NET dose for C#)._
+
+[![Join the chat at https://gitter.im/prado-project-starter/Lobby](https://badges.gitter.im/prado-project-starter/Lobby.svg)](https://gitter.im/prado-project-starter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 ## Pre-requisites :
 * php : >=5.3.3
