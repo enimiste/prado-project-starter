@@ -69,11 +69,11 @@ Now you can test the project.
    + A login page will show.
    + Type one of these credentials to access the web app as authenticated user : 
    
-      |Username|Password|Role        |
-      |--------|--------|------------|
-      | sadmin |sadmin  |Super Admin |
-      | admin  |admin   |Normal Admin|
-      | user   |user    |Normal User |
+      Username | Password | Role        
+      --- | --- | ---
+       sadmin |sadmin  |Super Admin 
+       admin  |admin   |Normal Admin
+       user   |user    |Normal User 
       
    + And bingo you can manage : **users**, **site settings**  
 
