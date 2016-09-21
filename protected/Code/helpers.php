@@ -358,7 +358,6 @@ if ( ! function_exists( 'site_info' ) ) {
 		}
 	}
 }
-
 if ( ! function_exists( 'check_is_int' ) ) {
 
 	/**
@@ -373,5 +372,20 @@ if ( ! function_exists( 'check_is_int' ) ) {
 		       ( is_int( $other ) ||
 		         ( is_string( $other ) &&
 		           (string) intval( $other ) == $other ) );
+	}
+}
+if ( ! function_exists( 'file_extension' ) ) {
+
+	/**
+	 * Return the file extension
+	 *
+	 * @param string $file_name
+	 *
+	 * @return bool
+	 */
+	function file_extension( $file_name ) {
+		$parts = explode( '.', $file_name );
+
+		return $parts[1];
 	}
 }
