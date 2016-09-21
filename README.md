@@ -74,6 +74,7 @@ Now you can test the project.
       | sadmin |sadmin  |Super Admin |
       | admin  |admin   |Normal Admin|
       | user   |user    |Normal User |
+      
    + And bingo you can manage : **users**, **site settings**  
 
 
