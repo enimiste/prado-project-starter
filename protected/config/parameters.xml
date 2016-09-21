@@ -3,6 +3,7 @@
 <configuration>
     <!-- application parameters -->
     <parameters>
+        <!-- The Url to the root of your project -->
         <parameter id="base_url" value="http://localhost:8888/site-starter-prado/"/>
     </parameters>
 
