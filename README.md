@@ -38,7 +38,7 @@ In this section i will focus on two database types : **Sqlite** and **Mysql**.
      <database ConnectionString="sqlite:protected/data/app.db"/>
      ```
   3. Uncomment the Mysql config (mysql or mysqli) : 
-  
+    
      ```xml
      <!-- <database ConnectionString="mysqli:host=localhost;dbname=test"
                       username="dbuser" password="dbpass" /> -->
@@ -76,6 +76,8 @@ Now you can test the project.
        user   |user    |Normal User 
    + And bingo you can manage : **users**, **site settings**  
 
+## LICENSE : 
+[MIT](../blob/master/LICENSE)
 
 [//]:# (These are the links used in this document.)
 
