@@ -67,7 +67,8 @@ Now you can test the project.
 4. The web app will show you the default page of Frontoffice.
 5. To see the Backoffice, click on the link **"Espace d'administration"** (Backoffice space in frensh, sorry) :
    + A login page will show.
-   + Type one of these credentials to access the web app as authenticated user : 
+   + Type one of these credentials to access the web app as authenticated user :
+   
       Username | Password | Role        
       --- | --- | ---
        sadmin |sadmin  |Super Admin 
