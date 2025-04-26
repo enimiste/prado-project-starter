@@ -65,11 +65,11 @@ Ex :
 
 ## Test in browser :
 Now you can test the project.  
-1. Check if your web server under it the project is deployed is running.
-2. Check if your RDBS is running if you use one.
-3. Type the URL to your project in the browser. Ex : `http://localhost/project_name`.
+1. Check that your web server is running (where the project is deployed).
+2. Check that your RDBS is running (if you use one).
+3. Type the URL of your project in the browser. Ex : `http://localhost/project_name`.
 4. The web app will show you the default page of Frontoffice.
-5. To see the Backoffice, click on the link **"Espace d'administration"** (Backoffice space in frensh, sorry) :
+5. To see the Backoffice, click on the link **"Espace d'administration"** (Backoffice space in frensh, sorry :)) :
    + A login page will show.
    + Type one of these credentials to access the web app as authenticated user :
    
@@ -92,7 +92,7 @@ The **themes** directory holde the css, js files needed to render the IHM of eac
 The theme used in the backoffice is the [SB-admin 2014 version](https://startbootstrap.com/theme/sb-admin-2). For the front office is not implemented for instance.
 
 ### Helpers functions :
-I added a bunch of helper functions to help developper access most used features of Prado easaly.  
+I added a bunch of helper functions to help developper access most used features of Prado easily.  
 Ex: 
 ```php
 app();
@@ -100,21 +100,21 @@ app();
 user();
 //shortcut to Prado::getApplication()->getUser();
 ```
-And so on ...
-Lets now take a tour of these function :  
+And so on ...  
+Lets now take a tour of these functions :  
 
 #### Request/Response :
 Function | Return Type |Description
 :--- | --- | :---
-`session()` |`THttpSession`| Return the current running user session.
+`session()` |`THttpSession`| Return the current user session.
 `request()` |`THttpRequest`| Return the current request.
 `response()` |`THttpResponse`| Return the current response. 
 `input($name [, $default = null] )` |`string`| Retrieve a request input by its name or return a default value. 
 `page()` | `TPage|NPage` | Return the current processed **Page**.
-`redirect_page($page [, array $param])` || Redirect the user to a given page. **$page** is the namespace format to the page, _ex : bo.users.ListPage_
+`redirect_page($page [, array $param])` || Redirect the user to a given page. **$page** is the namespace format to the page **dir_name.sub_dir_name.PageName**. For example : bo.users.ListPage_
 `redirect_url($url)` || Redirect the user to a given url. 
-`page_url($page [, array $param] )` |`string`| Contruct an URL pointing to a given page. **$page** is the namespace format to the page, _ex : bo.users.ListPage_ 
-`site_url($uri)` | `string` | Build an url to a resource located under the root directory of the project. The param **base_url** is used here.
+`page_url($page [, array $param] )` |`string`| Contruct an URL pointing to a given page. **$page** is the namespace format to the page **dir_name.sub_dir_name.PageName**. For example : bo.users.ListPage_ 
+`site_url($uri)` | `string` | Build an Url to a resource which is located under the root directory of the project. The param **base_url** is used here.
 
 
 #### Security :
@@ -129,11 +129,11 @@ Function | Return Type |Description
 #### General use :
 Function | Return Type |Description
 :--- | --- | :---
-`app()` | `TApplication` | Return the current runining Prado Application instance.
+`app()` | `TApplication` | Return the current running Prado Application instance.
 `module($id)` |`IModule`| Get a module by its id. 
 `running_service()` |`IService`| Return the current running service that processing the request. For instance it returns the `TPageService`
-`page_service()` |`TPageService`| If another service is processing the request, this function throw a function.
-`param($id [, $default = null] )` | `string` | Retrieve a given parameter from the `config/parameters` file by its name. If not found, the $default value will be returned.
+`page_service()` |`TPageService`| If another service is processing the request, this function throw an error.
+`param($id [, $default = null] )` | `string` | Retrieve a given parameter from the `config/parameters` file by its name. If not found, the `$default` value will be returned.
 `using($namespace)` |  | Shortcut to `\Prado::using( $namespace );`. I think is more readable this way.
 `site_info($name [, $default = ''] )` | `string` | Return a site setting by its name. If not found returns the default value.
 `mysql_timestamp(int $time)` | `string` | Format the given time to the TIMESTAMP format requied by Mysql. Shortcut to `date( 'Y-m-d H:i:s', $time );`
@@ -142,20 +142,20 @@ Function | Return Type |Description
 #### Localisation :
 Function | Return Type |Description
 :--- | --- | :---
-`localize($text [, array $parameters [, $catalogue = null [, $charset = null]]] )` |`string`| Translate and localize a given _$text_ based on the i18n and i10l of your application. 
+`localize($text [, array $parameters [, $catalogue = null [, $charset = null]]] )` |`string`| Translate and localize a given `$text` based on the i18n and i10l of your application. 
 
 
 #### File System :
 Function | Return Type |Description
 :--- | --- | :---
-`file_extension($filename)` | `string` | Returns the file extension by spliting its name.
+`file_extension($filename)` | `string` | Returns the file extension.
 
-## LICENSE : 
-[MIT](./LICENSE)
-
-[//]:# (These are the links used in this document.)
+## These are the links used in this document
 
 [PhpStorm]: https://www.jetbrains.com/phpstorm/
 [PDO Driver]: http://php.net/manual/en/pdo.drivers.php
 [Sqlite3]: https://www.sqlite.org/
 [PRADO]: http://www.pradoframework.net/site/
+
+## LICENSE : 
+[MIT](./LICENSE)
