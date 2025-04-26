@@ -89,7 +89,7 @@ So `protected/pages`, `protected/pages` and `themes` directories are splited int
 
 The **themes** directory holde the css, js files needed to render the IHM of each side of you web app. Ex: `themes\bo` contains sb-admin css and js files used in backoffice IHM.
 
-The theme used in the backoffice is the [SB-admin](https://startbootstrap.com/template-overviews/sb-admin-2/). For the front office is not implemented for instance.
+The theme used in the backoffice is the [SB-admin 2014 version](https://startbootstrap.com/theme/sb-admin-2). For the front office is not implemented for instance.
 
 ### Helpers functions :
 I added a bunch of helper functions to help developper access most used features of Prado easaly.  
